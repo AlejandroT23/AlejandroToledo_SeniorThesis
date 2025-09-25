@@ -1,20 +1,20 @@
-## Week 1 Summary (MM/DD/YYYY)
+## Week 1 Summary (09/08/2025)
 
 ### This week I worked on:
 
-[Your answer here]
+Figuring out what type of project I would like to work on.
 
 ### This week I learned:
 
-[Your answer here]
+I learned about the process and how the senior seminar class is going to work.
 
 ### My successes this week were:
 
-[Your answer here]
+I did a lot of brainstorming for this project.
 
 ### The challenges I faced this week were:
 
-[Your answer here]
+Thinking of the pararmeters of the project.
 
 ---
 
