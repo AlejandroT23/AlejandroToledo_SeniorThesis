@@ -56,29 +56,29 @@ Figuring out what existing tools to look at for inspiration and what tools to us
 
 ---
 
-## Week 4 Summary (MM/DD/YYYY)
+## Week 4 Summary (09/29/2025)
 ### This week I worked on:
 
-[Your answer here]
+Creating my pitch concept and sharing it with both Dr. Mahoney and Dr. Zak.
 
 ### This week I learned:
 
-[Your answer here]
+There is a lot of planning that going into creating a piece of software.
 
 ### My successes this week were:
 
-[Your answer here]
+Getting approve to present my elevator pitch
 
 ### The challenges I faced this week were:
 
-[Your answer here]
+Figuring out the different languages and frameworks I should use for this project
 
 ---
 
-## Week 5 Summary (MM/DD/YYYY)
+## Week 5 Summary (10/06/2025)
 ### This week I worked on:
 
-[Your answer here]
+Preparing my elevator pitch to share with the class.
 
 ### This week I learned:
 
@@ -86,11 +86,12 @@ Figuring out what existing tools to look at for inspiration and what tools to us
 
 ### My successes this week were:
 
-[Your answer here]
+Presenting my pitch to the class and receiving some great feedback on what to look into when creating this project
 
 ### The challenges I faced this week were:
 
-[Your answer here]
+Debating on whether I should do desktop or web application. I believe website would allow for better communication, but 
+I am doing a website for my Graphic Design Thesis so I want to create something different.
 
 ---
 
