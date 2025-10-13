@@ -86,7 +86,7 @@ I learned that google has an api that my potentially give access to export inser
 
 ### My successes this week were:
 
-Presenting my pitch to the class and receiving some great feedback on what to look into when creating this project
+Presenting my pitch to the class and receiving some great feedback on what to look into when creating this project. I also talked with my boss and she gave me a copy of the spreadsheet that we use for work as data for my project.
 
 ### The challenges I faced this week were:
 
