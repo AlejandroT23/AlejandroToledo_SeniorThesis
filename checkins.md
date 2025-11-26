@@ -95,136 +95,136 @@ I am doing a website for my Graphic Design Thesis so I want to create something 
 
 ---
 
-## Week 6 Summary (MM/DD/YYYY)
+## Week 6 Summary (10/13/2025)
 ### This week I worked on:
 
-[Your answer here]
+I started creating the initial rough drafts of the page layout. This is
 
 ### This week I learned:
 
-[Your answer here]
+Different ways to create effective web layouts
 
 ### My successes this week were:
 
-[Your answer here]
+Creating multiples pages of my layout, allowing to think about more use cases that were not originally planned for.
 
 ### The challenges I faced this week were:
 
-[Your answer here]
+Looking for interesting design layouts to reference for my project, everything looks near identical with each other.
 
 ---
 
-## Week 7 Summary (MM/DD/YYYY)
+## Week 7 Summary (10/20/2025)
 ### This week I worked on:
 
-[Your answer here]
+Exploring more rough drafts
 
 ### This week I learned:
 
-[Your answer here]
+This week I focused more on the rough drafts, so I didn't really find something that was new
 
 ### My successes this week were:
 
-[Your answer here]
+Getting the main layout
 
 ### The challenges I faced this week were:
 
-[Your answer here]
+Trying to find the perfect UX design for the consumer
 
 ---
 
-## Week 8 Summary (MM/DD/YYYY)
+## Week 8 Summary (10/27/YYYY)
 ### This week I worked on:
 
-[Your answer here]
+I created a mind-map for my application
 
 ### This week I learned:
 
-[Your answer here]
+Nothing new
 
 ### My successes this week were:
 
-[Your answer here]
+Honing down on the final design
 
 ### The challenges I faced this week were:
 
-[Your answer here]
+Same as last week
 
 ---
 
-## Week 9 Summary (MM/DD/YYYY)
+## Week 9 Summary (11/03/2026)
 ### This week I worked on:
 
-[Your answer here]
+Started the web design for the project
 
 ### This week I learned:
 
-[Your answer here]
+I honed my figma skills
 
 ### My successes this week were:
 
-[Your answer here]
+Making some decent progress on my designs
 
 ### The challenges I faced this week were:
 
-[Your answer here]
+Balancing my school work
 
 ---
 
-## Week 10 Summary (MM/DD/YYYY)
+## Week 10 Summary (11/10/YYYY)
 ### This week I worked on:
 
-[Your answer here]
+Continuing my design process
 
 ### This week I learned:
 
-[Your answer here]
+The main differences between Java and Python
 
 ### My successes this week were:
 
-[Your answer here]
+Deciding to mainly focus on Python
 
 ### The challenges I faced this week were:
 
-[Your answer here]
+Figuring out how the api calls work
 
 ---
 
-## Week 11 Summary (MM/DD/YYYY)
+## Week 11 Summary (11/17/2026)
 ### This week I worked on:
 
-[Your answer here]
+Nothing new
 
 ### This week I learned:
 
-[Your answer here]
+Nothing new
 
 ### My successes this week were:
 
-[Your answer here]
+Nothing new
 
 ### The challenges I faced this week were:
 
-[Your answer here]
+I had a really big event to prepare for in another class so my work this week was limited
 
 ---
 
-## Week 12 Summary (MM/DD/YYYY)
+## Week 12 Summary (11/24/2024)
 ### This week I worked on:
 
-[Your answer here]
+Preparing for my sprint presentation
 
 ### This week I learned:
 
-[Your answer here]
+Nothing new
 
 ### My successes this week were:
 
-[Your answer here]
+Finalizing the presentation
 
 ### The challenges I faced this week were:
 
-[Your answer here]
+Balancing my tasks
 
 ---
 
