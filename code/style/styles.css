@@ -1,0 +1,90 @@
+/* Webpage Setup */
+
+* {
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: right;
+}
+
+/* Main Website Container Classes */
+
+.side_bar {
+    height: 100%;
+    width: 20%;
+    background-color: aquamarine;
+}
+
+.main {
+    height: 100%;
+    width: 80%;
+    background-color: red;
+}
+
+/* Home Page Classes */
+
+.side_bar_name_section {
+    height: 5%;
+    width: 100%;
+    display: flex;
+    flex-direction: right;
+    background-color: green;
+}
+
+.profile_picture {
+    height: 100%;
+    width: 14%;
+    background-color: orangered;
+}
+
+.profile_name {
+    height: 100%;
+    width: 76%;
+    padding-left: 10px;
+    background-color: brown;
+}
+
+.search {
+    height: 5%;
+    width: 100%;
+    background-color: navy;
+}
+
+.search_bar {
+    width: 50%;
+    height: auto;
+    object-fit: contain;
+}
+
+.splash {
+    height: 10%;
+    width: 100%;
+    background-color: orangered;
+}
+
+.recents {
+    height: 85%;
+    width: 100%;
+    background-color: beige;
+    display: flex;
+    flex-direction: right;
+}
+
+.recents_sections {
+    height: 100%;
+    width: 40%;
+}
+
+/* Temporary Shapes */
+.circle {
+    height: 100%;
+    aspect-ratio: 1;
+    background-color: yellow;
+    border-radius: 50%;
+}
+
