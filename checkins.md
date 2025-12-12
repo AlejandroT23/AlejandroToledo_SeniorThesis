@@ -228,21 +228,21 @@ Balancing my tasks
 
 ---
 
-## Week 13 Summary (MM/DD/YYYY)
+## Week 13 Summary (12/1/2025)
 ### This week I worked on:
 
-[Your answer here]
+I presented my sprint presenation
 
 ### This week I learned:
 
-[Your answer here]
+I didn't really learn anything new
 
 ### My successes this week were:
 
-[Your answer here]
+Having a successful sprint presentation
 
 ### The challenges I faced this week were:
 
-[Your answer here]
+Figuring out what next to work on within the development process
 
 ---

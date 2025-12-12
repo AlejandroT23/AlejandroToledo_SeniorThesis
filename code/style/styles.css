@@ -1,18 +1,23 @@
 /* Webpage Setup */
 
 * {
-    height: 100%;
-    width: 100%;
-    padding: 0px;
-    overflow: hidden;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+    /* REMOVE COMMENTS WHEN DONE */
+    /* overflow: hidden; */    
 }
 
 body {
     display: flex;
-    flex-direction: right;
+    flex-direction: row;
+    height: 100vh;
 }
 
+/*  */
 /* Main Website Container Classes */
+/*  */
 
 .side_bar {
     height: 100%;
@@ -23,10 +28,14 @@ body {
 .main {
     height: 100%;
     width: 80%;
+    padding-left: 40px;
+    padding-right: 40px;
     background-color: red;
 }
 
-/* Home Page Classes */
+/*  */
+/* --- Home Page Classes --- */
+/*  */
 
 .side_bar_name_section {
     height: 5%;
@@ -43,20 +52,27 @@ body {
 }
 
 .profile_name {
+    display: flex;
+    align-items: center;
+
     height: 100%;
     width: 76%;
     padding-left: 10px;
     background-color: brown;
 }
 
+/* Find out better way, also make this round */
 .search {
     height: 5%;
-    width: 100%;
     background-color: navy;
+    padding-top: 13px;
+}
+
+.search input {
+    width: 48%;
 }
 
 .search_bar {
-    width: 50%;
     height: auto;
     object-fit: contain;
 }
@@ -70,14 +86,22 @@ body {
 .recents {
     height: 85%;
     width: 100%;
+    padding-bottom: 20px;
     background-color: beige;
     display: flex;
-    flex-direction: right;
+    flex-direction: row;
+    gap: 40px;
 }
 
 .recents_sections {
-    height: 100%;
-    width: 40%;
+    flex: 1;
+    min-width: none;
+}
+
+.recents_headers {
+    font-family: Helvetica, sans-serif;
+    font-size: 25px;
+    
 }
 
 /* Temporary Shapes */
