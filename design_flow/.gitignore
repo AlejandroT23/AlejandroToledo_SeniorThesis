@@ -42,3 +42,4 @@ Thumbs.db
 
 # Server dependencies (if server has its own node_modules)
 server/node_modules
+node_modules
