@@ -1,9 +1,43 @@
 import LoginPage from './login.jsx'
+import { useState } from 'react';
 
 function App() {
+  
+  const [error, setError] = useState(null);
+  const [session, setSession] = useState(null);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true); 
+  
+  // Take state variables above and figure out what true and falses are needed to allow which pages to display
+
+  // useEffect(() => {}, [];)
+
+  // onAuthStateChange((session) => {
+  //   if (session) {
+      
+  //     // Get the user ID - Possible from index.js route that calls for user data
+      
+  //     if (!db.userExist(user)) {
+  //       firstAccountSetup()
+  //     } else {
+  //       return (<MainMenu />)
+  //     }
+  //   } else {
+  //     return (<LoginPage />)
+  //   }
+  // })
+
+
+
+
+
   return (
     <LoginPage />
   )
+}
+
+function firstAccountSetup() {
+
 }
 
 export default App
