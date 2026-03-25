@@ -1,43 +1,55 @@
+// import * as db from './db';
+
 import LoginPage from './login.jsx'
-import { useState } from 'react';
+import {useState} from 'react';
+import {createUser, userExists, getUser} from '../../database.js'
 
 function App() {
   
-  const [error, setError] = useState(null);
-  const [session, setSession] = useState(null);
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true); 
+const [error, setError] = useState(null);
+const [session, setSession] = useState(null);
+const [user, setUser] = useState(null);
+const [loading, setLoading] = useState(true); 
   
   // Take state variables above and figure out what true and falses are needed to allow which pages to display
 
-  // useEffect(() => {}, [];)
+useEffect(() => {}, []);
 
-  // onAuthStateChange((session) => {
-  //   if (session) {
+  
+// import supabase?
+  supabase.auth.onAuthStateChange(async (newSession) => {
+  setSession(newSession);
+    
+  if (newSession) {
+    const exists = await userExists(newSession.user.id);
+
+    if (!exists) {
+        const metaData = session.user.user_metadata
+
+        await createUser({
+            id: newSession.user.id,
+            first_name: metaData.full_name?.split(' ')[0] || '',
+            last_name: metaData.full_name?.split(' ').slice(1).join(' ') || '',
+            avatar: metaData.avatar_url || '',
+            google_drive_token: null, // can set this up later
+        });
+    }
       
-  //     // Get the user ID - Possible from index.js route that calls for user data
+    const {data} = await getUser(newSession.user.id);
+    setUser(data);
       
-  //     if (!db.userExist(user)) {
-  //       firstAccountSetup()
-  //     } else {
-  //       return (<MainMenu />)
-  //     }
-  //   } else {
-  //     return (<LoginPage />)
-  //   }
-  // })
+    } else {
+        setUser(null);
+    }
+  })
 
-
-
-
-
-  return (
-    <LoginPage />
-  )
-}
-
-function firstAccountSetup() {
-
+  if (loading) {
+    return (<div> Loading... </div>);
+  } else if (!session) {
+    return (<LoginPage />);
+  } else {
+    return (<MainMenu />);
+  }
 }
 
 export default App

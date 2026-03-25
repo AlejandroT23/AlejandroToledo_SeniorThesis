@@ -8,7 +8,7 @@ function LoginPage() {
     const [error, setError] = useState(null);
 
     const handleGoogleLogin = async () => {
-        const {error} = await supabase.auth.signInWithOAuth(
+        const {data, error} = await supabase.auth.signInWithOAuth(
             {
                 provider: 'google'
             }
