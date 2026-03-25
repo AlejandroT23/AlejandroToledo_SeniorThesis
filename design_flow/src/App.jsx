@@ -1,8 +1,8 @@
 // import * as db from './db';
 import { supabase } from './supabaseClient'
-
+import Test from './testpage.jsx';
 import LoginPage from './login.jsx';
-import MainMenu from './main.jsx';
+// import MainMenu from './main.jsx';
 import {useState, useEffect} from 'react';
 import {createUser, userExists, getUser} from './database.js'
 
@@ -50,7 +50,7 @@ function App() {
 
     if (loading) {return (<div> Loading... </div>);}
     if (!session) {return (<LoginPage />);}
-    return (<MainMenu />);
+    return (<Test />);
 }
 
 export default App
