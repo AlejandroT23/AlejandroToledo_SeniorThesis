@@ -2,7 +2,7 @@
 
 import LoginPage from './login.jsx'
 import {useState} from 'react';
-import {createUser, userExists, getUser} from '../../database.js'
+import {createUser, userExists, getUser} from './database.js'
 
 function App() {
   

@@ -13,7 +13,7 @@ export async function getUser(userID) {
     }
 }
 
-export async function userExist(userID) {
+export async function userExists(userID) {
     const {data, error} = await supabase
         .from('users')
         .select('id')
