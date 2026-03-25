@@ -1,55 +1,56 @@
 // import * as db from './db';
+import { supabase } from './supabaseClient'
 
-import LoginPage from './login.jsx'
-import {useState} from 'react';
+import LoginPage from './login.jsx';
+import MainMenu from './main.jsx';
+import {useState, useEffect} from 'react';
 import {createUser, userExists, getUser} from './database.js'
 
 function App() {
   
-const [error, setError] = useState(null);
-const [session, setSession] = useState(null);
-const [user, setUser] = useState(null);
-const [loading, setLoading] = useState(true); 
+    const [error, setError] = useState(null);
+    const [session, setSession] = useState(null);
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true); 
   
-  // Take state variables above and figure out what true and falses are needed to allow which pages to display
+    // Take state variables above and figure out what true and falses are needed to allow which pages to display
 
-useEffect(() => {}, []);
-
-  
-// import supabase?
-  supabase.auth.onAuthStateChange(async (newSession) => {
-  setSession(newSession);
+    useEffect(() => {
+        const {data: {subscription} } = supabase.auth.onAuthStateChange(async (_event, newSession) => {
+            setSession(newSession);
     
-  if (newSession) {
-    const exists = await userExists(newSession.user.id);
+            if (newSession) {
+                const exists = await userExists(newSession.user.id);
 
-    if (!exists) {
-        const metaData = session.user.user_metadata
+                if (!exists) {
+                    const metaData = newSession.user.user_metadata
 
-        await createUser({
-            id: newSession.user.id,
-            first_name: metaData.full_name?.split(' ')[0] || '',
-            last_name: metaData.full_name?.split(' ').slice(1).join(' ') || '',
-            avatar: metaData.avatar_url || '',
-            google_drive_token: null, // can set this up later
-        });
-    }
+                    await createUser({
+                        id: newSession.user.id,
+                        first_name: metaData.full_name?.split(' ')[0] || '',
+                        last_name: metaData.full_name?.split(' ').slice(1).join(' ') || '',
+                        avatar: metaData.avatar_url || '',
+                        google_drive_token: null, // can set this up later
+                    });
+                }
       
-    const {data} = await getUser(newSession.user.id);
-    setUser(data);
+                const {data} = await getUser(newSession.user.id);
+                setUser(data);
       
-    } else {
-        setUser(null);
-    }
-  })
+            } else {
+            setUser(null);
+            }
 
-  if (loading) {
-    return (<div> Loading... </div>);
-  } else if (!session) {
-    return (<LoginPage />);
-  } else {
+            setLoading(false);
+        })
+
+        //Maybe remove?
+        return () => subscription.unsubscribe();
+    }, []);
+
+    if (loading) {return (<div> Loading... </div>);}
+    if (!session) {return (<LoginPage />);}
     return (<MainMenu />);
-  }
 }
 
 export default App
