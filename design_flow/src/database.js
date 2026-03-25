@@ -1,5 +1,7 @@
 import { supabase } from './supabaseClient'
 
+// Disable RLS in the table editor for all other tables //
+
 export async function getUser(userID) {
     const {data, error} = await supabase
         .from('users')

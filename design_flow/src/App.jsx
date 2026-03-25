@@ -62,6 +62,8 @@ function App() {
         return () => subscription.unsubscribe();
     }, []);
 
+
+    // We need to find a way to say can't log in or log in failed
     if (loading) {return (<div> Loading... </div>);}
     if (!session) {return (<LoginPage />);}
     return (<Test />);
