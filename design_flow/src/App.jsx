@@ -4,7 +4,7 @@ import Test from './testpage.jsx';
 import LoginPage from './login.jsx';
 // import MainMenu from './main.jsx';
 import {useState, useEffect} from 'react';
-import {createUser, userExists, getUser} from './database.js'
+import {createUser, userExists, getUser, getSession} from './database.js'
 
 function App() {
   
@@ -16,6 +16,21 @@ function App() {
     // Take state variables above and figure out what true and falses are needed to allow which pages to display
 
     useEffect(() => {
+        
+        supabase.auth.getSession().then(({data: {session}}) => {
+            setSession(session);
+
+            if (session) {
+                getUser(session.user.id).then(({data}) => {
+                    setUser(data);
+                })
+            }
+
+            setLoading(false);
+        });
+        
+        
+        
         const {data: {subscription} } = supabase.auth.onAuthStateChange(async (_event, newSession) => {
             setSession(newSession);
     
@@ -40,8 +55,6 @@ function App() {
             } else {
             setUser(null);
             }
-
-            setLoading(false);
         })
 
         //Maybe remove?

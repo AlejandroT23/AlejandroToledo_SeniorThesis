@@ -34,3 +34,8 @@ export async function createUser({ id, first_name, last_name, avatar, google_dri
         .single();
     return {data, error};
 }
+
+export async function getSession() {
+  const { data: { session }, error } = await supabase.auth.getSession();
+  return { session, error };
+}
