@@ -26,6 +26,7 @@ function App() {
                 })
             }
 
+            console.log("Setting loading to false");
             setLoading(false);
         });
         

@@ -28,7 +28,7 @@ export async function userExists(userID) {
 
 export async function createUser({ id, first_name, last_name, avatar, google_drive_token}) {
     const {data, error} = await supabase
-        .from('user')
+        .from('users')
         .insert({id, first_name, last_name, avatar, google_drive_token})
         .select()
         .single();
