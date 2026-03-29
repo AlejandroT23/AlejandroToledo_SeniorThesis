@@ -41,7 +41,7 @@ function MainMenu() {
                             <div class="circle"></div>
                         </div>    
                         <div class="profile_name">
-                            <h1 style="font-size: 12pt; font-family: Helvetica, sans-serif;">Alejandro Toledo</h1>
+                            <h1 style={{fontSize: '12pt', fontFamily: 'Helvetica, sans-serif'}}>Alejandro Toledo</h1>
                         </div>            
                     </div>
                 </div>
@@ -57,12 +57,12 @@ function MainMenu() {
                     </div>
                 <div class="splash"></div>
                 <div class="recents">
-                    <div style="background-color: blueviolet" class="recents_sections">
+                    <div style={{backgroundColor: 'blueviolet'}} className="recents_sections">
                         <div>
                             <TeamComponent teams={teams}/>    
                         </div> 
                     </div>
-                    <div style="background-color: rgb(200, 128, 128)" class="recents_sections">
+                    <div style={{backgroundColor: 'rgb(200, 128, 128)'}} className="recents_sections">
                         <div>
                             <DeadlineComponent deadlines={deadlines}/>
                         </div>
@@ -76,3 +76,7 @@ function MainMenu() {
 }
 
 export default MainMenu;
+
+
+// <div style="background-color: blueviolet" class="recents_sections"></div>
+//
