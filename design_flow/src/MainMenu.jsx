@@ -18,6 +18,9 @@ function MainMenu() {
     useEffect(() => {
         if(user) {
             getUserTeams(user.id).then(({data, error}) => {
+                console.log("Teams data:", data);
+                console.log("Teams error:", error);
+                
                 if (data) {
                     setTeams(data);
                 }
