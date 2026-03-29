@@ -35,19 +35,19 @@ function MainMenu() {
     return (
         <>
             <body>
-                <div class="side_bar">
-                    <div class="side_bar_name_section">
-                        <div class="profile_picture">
-                            <div class="circle"></div>
+                <div className="side_bar">
+                    <div className="side_bar_name_section">
+                        <div className="profile_picture">
+                            <div className="circle"></div>
                         </div>    
-                        <div class="profile_name">
+                        <div className="profile_name">
                             <h1 style={{fontSize: '12pt', fontFamily: 'Helvetica, sans-serif'}}>Alejandro Toledo</h1>
                         </div>            
                     </div>
                 </div>
-                <div class="main">
-                    <div class="search">
-                        <div class="search_bar">
+                <div className="main">
+                    <div className="search">
+                        <div className="search_bar">
                             <search>
                                 <form>
                                     <input name="fsrch" id="fsrch" placeholder="Search"></input>
@@ -55,20 +55,22 @@ function MainMenu() {
                             </search>
                         </div>
                     </div>
-                <div class="splash"></div>
-                <div class="recents">
-                    <div style={{backgroundColor: 'blueviolet'}} className="recents_sections">
-                        <div>
-                            <TeamComponent teams={teams}/>    
-                        </div> 
+                    <div className="splash">
+                    
                     </div>
-                    <div style={{backgroundColor: 'rgb(200, 128, 128)'}} className="recents_sections">
-                        <div>
-                            <DeadlineComponent deadlines={deadlines}/>
+                    <div className="recents">
+                        <div style={{backgroundColor: 'blueviolet'}} className="recents_sections">
+                            <div>
+                                <TeamComponent teams={teams}/>    
+                            </div> 
                         </div>
-                        <div></div>
+                        <div style={{backgroundColor: 'rgb(200, 128, 128)'}} className="recents_sections">
+                            <div>
+                                <DeadlineComponent deadlines={deadlines}/>
+                            </div>
+                            <div></div>
+                        </div>
                     </div>
-                </div>
                 </div>
             </body>
         </>
