@@ -6,7 +6,7 @@ import {getUserTeams, getMostRecentDeadlines} from './database.js';
 import TeamComponent from "./TeamComponent.jsx";
 import DeadlineComponent from "./DeadlineComponent.jsx";
 
-import './styles/styles.css';
+// import './styles/styles.css';
 
 function MainMenu() {
     const [teams, setTeams] = useState([]);
@@ -34,40 +34,37 @@ function MainMenu() {
     // Insert notifications
     return (
         <>
-                <div className="side_bar">
-                    <div className="side_bar_name_section">
-                        <div className="profile_picture">
-                            <div className="circle"></div>
-                        </div>    
-                        <div className="profile_name">
-                            <h1 style={{fontSize: '12pt', fontFamily: 'Helvetica, sans-serif'}}>Alejandro Toledo</h1>
-                        </div>            
+            {/* Side Bar */}
+            <div>
+                    {/* Side Bar Name Section*/}
+                    <div>
+                        {/* Profile Pic: Pic then Profile */}
+                        <div></div>    
+                        <div></div>            
                     </div>
                 </div>
-                <div className="main">
-                    <div className="search">
-                        <div className="search_bar">
-                            <search>
-                                <form>
-                                    <input name="fsrch" id="fsrch" placeholder="Search"></input>
-                                </form>
-                            </search>
-                        </div>
+                {/* Main */}
+                <div>
+                    {/* Search */}
+                    <div>
+                        {/* Search Bar */}
+                        <div></div>
                     </div>
-                    <div className="splash">
-                    
-                    </div>
-                    <div className="recents">
-                        <div style={{backgroundColor: 'blueviolet'}} className="recents_sections">
+                    {/* Splash */}
+                    <div></div>
+                    {/* Component */}
+                    <div>
+                        {/* Team Component */}
+                        <div>
                             <div>
                                 <TeamComponent teams={teams}/>    
                             </div> 
                         </div>
-                        <div style={{backgroundColor: 'rgb(200, 128, 128)'}} className="recents_sections">
+                        {/* Deadline Component */}
+                        <div>
                             <div>
                                 <DeadlineComponent deadlines={deadlines}/>
                             </div>
-                            <div></div>
                         </div>
                     </div>
                 </div>
