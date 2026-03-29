@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react"
-import {AuthContext} from './AuthContext.jsx';
+import AuthContext from './AuthContext.jsx';
 import {getUserTeams, getMostRecentDeadlines} from './database.js';
 
 // Maybe edit in the future, at least location
