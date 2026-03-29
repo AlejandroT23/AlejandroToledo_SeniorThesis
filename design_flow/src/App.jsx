@@ -1,7 +1,9 @@
 // import * as db from './db';
 import { supabase } from './supabaseClient'
+import AuthContext from './AuthContext.jsx'
 import Test from './testpage.jsx';
 import LoginPage from './login.jsx';
+import MainMenu from './MainMenu.jsx';
 // import MainMenu from './main.jsx';
 import {useState, useEffect} from 'react';
 import {createUser, userExists, getUser, getSession} from './database.js'
@@ -29,8 +31,6 @@ function App() {
             console.log("Setting loading to false");
             setLoading(false);
         });
-        
-        
         
         const {data: {subscription} } = supabase.auth.onAuthStateChange(async (_event, newSession) => {
             setSession(newSession);
@@ -66,7 +66,11 @@ function App() {
     // We need to find a way to say can't log in or log in failed
     if (loading) {return (<div> Loading... </div>);}
     if (!session) {return (<LoginPage />);}
-    return (<Test />);
+    return (
+        <AuthContext.Provider value={user}>
+            <MainMenu />
+        </AuthContext.Provider>
+    );
 }
 
 export default App
