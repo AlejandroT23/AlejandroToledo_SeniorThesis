@@ -32,7 +32,7 @@ function MainMenu() {
                 }
             })
         }
-    }, []);
+    }, [user]);
 
     // Insert notifications
     return (
