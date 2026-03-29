@@ -34,6 +34,9 @@ function MainMenu() {
     // Insert notifications
     return (
         <>
+            <div>
+                <h1>This would be the Main Menu Page</h1>
+            </div>
             {/* Side Bar */}
             <div>
                     {/* Side Bar Name Section*/}
