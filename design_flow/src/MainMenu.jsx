@@ -34,7 +34,6 @@ function MainMenu() {
     // Insert notifications
     return (
         <>
-            <body>
                 <div className="side_bar">
                     <div className="side_bar_name_section">
                         <div className="profile_picture">
@@ -72,7 +71,6 @@ function MainMenu() {
                         </div>
                     </div>
                 </div>
-            </body>
         </>
     );
 }
