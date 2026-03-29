@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react"
+import {useState, useEffect, useContext} from "react"
 import AuthContext from './AuthContext.jsx';
 import {getUserTeams, getMostRecentDeadlines} from './database.js';
 
@@ -17,7 +17,7 @@ function MainMenu() {
 
     useEffect(() => {
         if(user) {
-            getUserTeam(user.id).then(({data, error}) => {
+            getUserTeams(user.id).then(({data, error}) => {
                 if (data) {
                     setTeams(data);
                 }
