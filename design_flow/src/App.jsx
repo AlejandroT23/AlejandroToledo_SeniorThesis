@@ -7,6 +7,9 @@ import MainMenu from './MainMenu.jsx';
 // import MainMenu from './main.jsx';
 import {useState, useEffect} from 'react';
 import {createUser, userExists, getUser, getSession} from './database.js'
+//--
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+
 
 function App() {
   
@@ -68,7 +71,12 @@ function App() {
     if (!session) {return (<LoginPage />);}
     return (
         <AuthContext.Provider value={user}>
-            <MainMenu />
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<MainMenu />} />
+                    <Route path="/team/:teamId" element={<Test />} />
+                </Routes>
+            </BrowserRouter>
         </AuthContext.Provider>
     );
 }

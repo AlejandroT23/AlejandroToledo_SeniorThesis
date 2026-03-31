@@ -1,4 +1,5 @@
 import {useState, useEffect, useContext} from "react"
+import {useNavigate} from 'react-router-dom'
 import AuthContext from './AuthContext.jsx';
 import {getUserTeams, getMostRecentDeadlines} from './database.js';
 
@@ -9,6 +10,8 @@ import DeadlineComponent from "./DeadlineComponent.jsx";
 // import './styles/styles.css';
 
 function MainMenu() {
+    const navigate = useNavigate();
+    
     const [teams, setTeams] = useState([]);
     const [deadlines, setDeadlines] = useState([]);
     //const [notifications, setNotify] = useState([]);
@@ -63,7 +66,10 @@ function MainMenu() {
                         {/* Team Component */}
                         <div>
                             <div>
-                                <TeamComponent teams={teams}/>    
+                                <TeamComponent 
+                                    teams={teams}
+                                    onTeamClick={(teamId) => navigate(`/team/${teamId}`)}
+                                /> 
                             </div> 
                         </div>
                         {/* Deadline Component */}
