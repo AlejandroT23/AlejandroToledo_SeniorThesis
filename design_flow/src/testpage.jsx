@@ -1,13 +1,16 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-
+import {useParams} from 'react-router-dom';
+import { getTeam } from './database';
 // Add logout button
 
 function Test() {
+    const {teamId} = useParams();
+    
     return (
-        <div>Logged In</div>
+        <div>
+            <p>Logged In</p>
+            <p>Team ID: {teamId}</p>
+        </div>
+        
     );
 }
 
