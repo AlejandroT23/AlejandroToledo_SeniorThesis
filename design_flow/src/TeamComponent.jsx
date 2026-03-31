@@ -1,6 +1,6 @@
 // 
 
-function TeamComponent({teams}) {
+function TeamComponent({teams, OnTeamClick}) {
     return(
         <div>
             {teams.map((team, index) => (
