@@ -1,5 +1,6 @@
 import {useParams, useNavigate} from 'react-router-dom';
 import { getTeam } from './database';
+
 // Add logout button
 
 function Test() {

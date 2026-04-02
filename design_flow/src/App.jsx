@@ -1,9 +1,11 @@
 // import * as db from './db';
 import { supabase } from './supabaseClient'
 import AuthContext from './AuthContext.jsx'
+
 import Test from './testpage.jsx';
 import LoginPage from './login.jsx';
 import MainMenu from './MainMenu.jsx';
+import TeamHomePage from './TeamHomePage.jsx';
 // import MainMenu from './main.jsx';
 import {useState, useEffect} from 'react';
 import {createUser, userExists, getUser, getSession} from './database.js'
