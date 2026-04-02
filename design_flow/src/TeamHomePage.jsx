@@ -1,8 +1,9 @@
 import {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
+import {getTeam, getMembers} from './database.js'
 
 function TeamHomePage() {
-    const [team, setTeam] = useState();
+    const [team, setTeams] = useState([]);
     const [members, setMembers] = useState([]);
     const [assignments, setAssignments] = useState();
 
@@ -47,7 +48,7 @@ function TeamHomePage() {
         <div>
             <p>Team Members</p>
             <div>
-                {members.map((member) => (
+                {members.map((member, index) => (
                     <div key={index}>
                         <span>{member.users?.first_name} {member.users?.last_name}</span>
                     </div>
