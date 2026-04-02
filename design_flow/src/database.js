@@ -90,3 +90,15 @@ export async function getSession() {
   const { data: { session }, error } = await supabase.auth.getSession();
   return { session, error };
 }
+
+// -- MEMBERS -- //
+
+export async function getMembers(TeamId) {
+    const {data, error} = await supabase
+        .from('team_members')
+        .select('*, users(*)')
+        .eq('team_id', TeamId)
+    return {data, error}
+}
+
+
