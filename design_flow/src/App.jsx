@@ -24,17 +24,24 @@ function App() {
     // Take state variables above and figure out what true and falses are needed to allow which pages to display
 
     useEffect(() => {
-        
+        console.log("App.jsx useEffect started");
+
         supabase.auth.getSession().then(async ({data: {session}}) => {
+            console.log("getSession resolved, session:", session);
             setSession(session);
 
             if (session?.provider_token) {
+                console.log("Setting provider token:", session.provider_token);
                 setProviderToken(session.provider_token);
             }
 
             if (session) {
+                console.log("Session exists, fetching user data for ID:", session.user.id);
                 const {data: userData} = await getUser(session.user.id);
+                console.log("getUser completed, userData:", userData);
                 setUser(userData);
+            } else {
+                console.log("No session found");
             }
 
             console.log("Setting loading to false");
@@ -42,16 +49,21 @@ function App() {
         });
         
         const {data: {subscription} } = supabase.auth.onAuthStateChange(async (_event, newSession) => {
+            console.log("onAuthStateChange fired, event:", _event, "newSession:", newSession);
             setSession(newSession);
-    
+
             if (newSession?.provider_token) {
+                console.log("Auth state change: Setting provider token");
                 setProviderToken(newSession.provider_token);
             }
 
             if (newSession) {
+                console.log("New session exists, checking if user exists");
                 const exists = await userExists(newSession.user.id);
+                console.log("User exists:", exists);
 
                 if (!exists) {
+                    console.log("User doesn't exist, creating new user");
                     const metaData = newSession.user.user_metadata
 
                     await createUser({
@@ -62,11 +74,14 @@ function App() {
                         google_drive_token: null, // can set this up later
                     });
                 }
-      
+
+                console.log("Fetching user data after auth state change");
                 const {data: userData} = await getUser(newSession.user.id);
+                console.log("User data fetched:", userData);
                 setUser(userData);
-      
+
             } else {
+                console.log("No session in auth state change, clearing user");
                 setUser(null);
             }
         })
@@ -77,8 +92,13 @@ function App() {
 
 
     // We need to find a way to say can't log in or log in failed
+    console.log("App render - loading:", loading, "session:", session, "user:", user);
     // if (loading) {return (<div> Loading... </div>);}
-    if (!session) {return (<LoginPage />);}
+    if (!session) {
+        console.log("No session, showing LoginPage");
+        return (<LoginPage />);
+    }
+    console.log("Session exists, rendering MainMenu");
     return (
         <AuthContext.Provider value={user}>
             <BrowserRouter>
