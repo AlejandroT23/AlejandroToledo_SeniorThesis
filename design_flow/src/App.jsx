@@ -12,6 +12,24 @@ import {createUser, userExists, getUser, getSession} from './database.js'
 //--
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
+// Helper function to extract and format user data from Supabase auth session
+function extractUserFromSession(session) {
+    if (!session || !session.user) return null;
+
+    const { user } = session;
+    const metadata = user.user_metadata || {};
+    const fullName = metadata.full_name || '';
+    const [firstName, ...lastNameParts] = fullName.split(' ');
+
+    return {
+        id: user.id,
+        first_name: firstName || '',
+        last_name: lastNameParts.join(' ') || '',
+        avatar: metadata.avatar_url || '',
+        email: user.email || '',
+        google_drive_token: null, // Will be updated separately if needed
+    };
+}
 
 function App() {
   
@@ -26,7 +44,7 @@ function App() {
     useEffect(() => {
         console.log("App.jsx useEffect started");
 
-        supabase.auth.getSession().then(async ({data: {session}}) => {
+        supabase.auth.getSession().then(({data: {session}}) => {
             console.log("getSession resolved, session:", session);
             setSession(session);
 
@@ -36,9 +54,9 @@ function App() {
             }
 
             if (session) {
-                console.log("Session exists, fetching user data for ID:", session.user.id);
-                const {data: userData} = await getUser(session.user.id);
-                console.log("getUser completed, userData:", userData);
+                console.log("Session exists, extracting user data");
+                const userData = extractUserFromSession(session);
+                console.log("User data extracted:", userData);
                 setUser(userData);
             } else {
                 console.log("No session found");
@@ -48,8 +66,8 @@ function App() {
             setLoading(false);
         });
         
-        const {data: {subscription} } = supabase.auth.onAuthStateChange(async (_event, newSession) => {
-            console.log("onAuthStateChange fired, event:", _event, "newSession:", newSession);
+        const {data: {subscription} } = supabase.auth.onAuthStateChange((event, newSession) => {
+            console.log("onAuthStateChange fired, event:", event, "newSession:", newSession);
             setSession(newSession);
 
             if (newSession?.provider_token) {
@@ -57,34 +75,13 @@ function App() {
                 setProviderToken(newSession.provider_token);
             }
 
-            // Only fetch user data on login or initial session load (page refresh)
-            // Skip TOKEN_REFRESHED and other events to avoid unnecessary refetches
-            if ((_event === 'SIGNED_IN' || _event === 'INITIAL_SESSION') && newSession && !user) {
-                console.log("Login/page refresh detected, fetching user data");
-                try {
-                    const exists = await userExists(newSession.user.id);
-                    console.log("User exists:", exists);
-
-                    if (!exists) {
-                        console.log("User doesn't exist, creating new user");
-                        const metaData = newSession.user.user_metadata
-
-                        await createUser({
-                            id: newSession.user.id,
-                            first_name: metaData.full_name?.split(' ')[0] || '',
-                            last_name: metaData.full_name?.split(' ').slice(1).join(' ') || '',
-                            avatar: metaData.avatar_url || '',
-                            google_drive_token: null, // can set this up later
-                        });
-                    }
-
-                    console.log("Fetching user data after auth state change");
-                    const {data: userData} = await getUser(newSession.user.id);
-                    console.log("User data fetched:", userData);
-                    setUser(userData);
-                } catch (err) {
-                    console.error("Error in onAuthStateChange user fetch:", err);
-                }
+            // Only extract user data on login or initial session load (page refresh)
+            // Skip TOKEN_REFRESHED and other events to avoid unnecessary updates
+            if ((event === 'SIGNED_IN' || event === 'INITIAL_SESSION') && newSession) {
+                console.log("Login/page refresh detected, extracting user data from session");
+                const userData = extractUserFromSession(newSession);
+                console.log("User data extracted:", userData);
+                setUser(userData);
 
             } else if (!newSession) {
                 console.log("Session ended, clearing user");
