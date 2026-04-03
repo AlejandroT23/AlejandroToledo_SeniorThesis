@@ -44,6 +44,10 @@ function MainMenu() {
     }, [user]);
 
     // Insert notifications
+    if (!user) {
+        return <div>Loading...</div>;
+    }
+
     return (
         <>
             <div>
@@ -54,8 +58,8 @@ function MainMenu() {
                     {/* Side Bar Name Section*/}
                     <div>
                         {/* Profile Pic: Pic then Profile */}
-                        <div></div>    
-                        <div></div>            
+                        <div></div>
+                        <div></div>
                     </div>
                 </div>
                 {/* Main */}
@@ -72,21 +76,23 @@ function MainMenu() {
                         {/* Team Component */}
                         <div>
                             <div>
-                                <TeamComponent 
+                                <TeamComponent
                                     teams={teams}
                                     onTeamClick={(teamId) => navigate(`/team/${teamId}`)}
-                                /> 
+                                />
                             </div>
                             <div>
                                 <button onClick = {() => setShowCreateModal(true)}>
                                     + Create Team
                                 </button>
-                                <CreateTeamModal 
-                                    isOpen={showCreateModal}
-                                    onClose={() => setShowCreateModal(false)}
-                                    userId={user.id}
-                                    onTeamCreated={handleTeamCreated}
-                                />
+                                {user && (
+                                    <CreateTeamModal
+                                        isOpen={showCreateModal}
+                                        onClose={() => setShowCreateModal(false)}
+                                        userId={user.id}
+                                        onTeamCreated={handleTeamCreated}
+                                    />
+                                )}
                             </div> 
                         </div>
                         {/* Deadline Component */}
