@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { createTeamWithDrive } from './functions/teamDriveService';
 import useDriveToken from './operations/hooks/useDriveToken';
-import './styles/CreateTeamModal.css';
+// import './styles/CreateTeamModal.css';
 
 const COLOR_OPTIONS = [
   '#FF5733', '#E74C3C', '#9B59B6', '#8E44AD',
