@@ -5,7 +5,7 @@
 // when the token is stale.
 
 import { useState, useEffect, useCallback } from 'react';
-import {supabase} from '../supabaseClient';
+import {supabase} from '../../supabaseClient.js';
 
 export default function useDriveToken() {
   const [driveToken, setDriveToken] = useState(null);
