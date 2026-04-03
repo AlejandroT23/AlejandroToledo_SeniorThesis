@@ -19,6 +19,7 @@ function App() {
     const [session, setSession] = useState(null);
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true); 
+    const [providerToken, setProviderToken] = useState(null);
   
     // Take state variables above and figure out what true and falses are needed to allow which pages to display
 
@@ -26,6 +27,10 @@ function App() {
         
         supabase.auth.getSession().then(({data: {session}}) => {
             setSession(session);
+
+            if (session?.provider_token) {
+                setProviderToken(session.provider_token);
+            }
 
             if (session) {
                 getUser(session.user.id).then(({data}) => {
@@ -40,6 +45,10 @@ function App() {
         const {data: {subscription} } = supabase.auth.onAuthStateChange(async (_event, newSession) => {
             setSession(newSession);
     
+            if (newSession?.provider_token) {
+                setProviderToken(newSession.provider_token);
+            }
+
             if (newSession) {
                 const exists = await userExists(newSession.user.id);
 

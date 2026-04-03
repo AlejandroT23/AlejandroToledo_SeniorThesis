@@ -6,17 +6,23 @@ import {getUserTeams, getMostRecentDeadlines} from './database.js';
 // Maybe edit in the future, at least location
 import TeamComponent from "./TeamComponent.jsx";
 import DeadlineComponent from "./DeadlineComponent.jsx";
+import CreateTeamModal from "./CreateTeamModal.jsx";
 
 // import './styles/styles.css';
 
 function MainMenu() {
+    
     const navigate = useNavigate();
     
     const [teams, setTeams] = useState([]);
     const [deadlines, setDeadlines] = useState([]);
-    //const [notifications, setNotify] = useState([]);
-
+    const [showCreateModal, setShowCreateModal] = useState(false);
+    
     const user = useContext(AuthContext);
+
+    const handleTeamCreated = (newTeam) => {
+        setTeams((prev) => [...prev, newTeam]);
+    };
 
     useEffect(() => {
         if(user) {
@@ -70,6 +76,17 @@ function MainMenu() {
                                     teams={teams}
                                     onTeamClick={(teamId) => navigate(`/team/${teamId}`)}
                                 /> 
+                            </div>
+                            <div>
+                                <button onClick = {() => setShowCreateModal(true)}>
+                                    + Create Team
+                                </button>
+                                <CreateTeamModal 
+                                    isOpen={showCreateModal}
+                                    onClose={() => setShowCreateModal(false)}
+                                    userId={user.id}
+                                    onTeamCreated={handleTeamCreated}
+                                />
                             </div> 
                         </div>
                         {/* Deadline Component */}
