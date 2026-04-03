@@ -59,26 +59,30 @@ function App() {
 
             if (newSession) {
                 console.log("New session exists, checking if user exists");
-                const exists = await userExists(newSession.user.id);
-                console.log("User exists:", exists);
+                try {
+                    const exists = await userExists(newSession.user.id);
+                    console.log("User exists:", exists);
 
-                if (!exists) {
-                    console.log("User doesn't exist, creating new user");
-                    const metaData = newSession.user.user_metadata
+                    if (!exists) {
+                        console.log("User doesn't exist, creating new user");
+                        const metaData = newSession.user.user_metadata
 
-                    await createUser({
-                        id: newSession.user.id,
-                        first_name: metaData.full_name?.split(' ')[0] || '',
-                        last_name: metaData.full_name?.split(' ').slice(1).join(' ') || '',
-                        avatar: metaData.avatar_url || '',
-                        google_drive_token: null, // can set this up later
-                    });
+                        await createUser({
+                            id: newSession.user.id,
+                            first_name: metaData.full_name?.split(' ')[0] || '',
+                            last_name: metaData.full_name?.split(' ').slice(1).join(' ') || '',
+                            avatar: metaData.avatar_url || '',
+                            google_drive_token: null, // can set this up later
+                        });
+                    }
+
+                    console.log("Fetching user data after auth state change");
+                    const {data: userData} = await getUser(newSession.user.id);
+                    console.log("User data fetched:", userData);
+                    setUser(userData);
+                } catch (err) {
+                    console.error("Error in onAuthStateChange user fetch:", err);
                 }
-
-                console.log("Fetching user data after auth state change");
-                const {data: userData} = await getUser(newSession.user.id);
-                console.log("User data fetched:", userData);
-                setUser(userData);
 
             } else {
                 console.log("No session in auth state change, clearing user");
