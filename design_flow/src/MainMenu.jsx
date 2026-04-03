@@ -43,11 +43,6 @@ function MainMenu() {
         }
     }, [user]);
 
-    // Insert notifications
-    if (!user) {
-        return <div>Loading...</div>;
-    }
-
     return (
         <>
             <div>
