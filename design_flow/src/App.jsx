@@ -25,7 +25,7 @@ function App() {
 
     useEffect(() => {
         
-        supabase.auth.getSession().then(({data: {session}}) => {
+        supabase.auth.getSession().then(async ({data: {session}}) => {
             setSession(session);
 
             if (session?.provider_token) {
@@ -33,9 +33,8 @@ function App() {
             }
 
             if (session) {
-                getUser(session.user.id).then(({data}) => {
-                    setUser(data);
-                })
+                const {data: userData} = await getUser(session.user.id);
+                setUser(userData);
             }
 
             console.log("Setting loading to false");
@@ -64,11 +63,11 @@ function App() {
                     });
                 }
       
-                const {data} = await getUser(newSession.user.id);
-                setUser(data);
+                const {data: userData} = await getUser(newSession.user.id);
+                setUser(userData);
       
             } else {
-            setUser(null);
+                setUser(null);
             }
         })
 
@@ -78,7 +77,7 @@ function App() {
 
 
     // We need to find a way to say can't log in or log in failed
-    if (loading) {return (<div> Loading... </div>);}
+    // if (loading) {return (<div> Loading... </div>);}
     if (!session) {return (<LoginPage />);}
     return (
         <AuthContext.Provider value={user}>
