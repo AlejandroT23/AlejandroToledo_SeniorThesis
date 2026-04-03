@@ -57,8 +57,10 @@ function App() {
                 setProviderToken(newSession.provider_token);
             }
 
-            if (newSession) {
-                console.log("New session exists, checking if user exists");
+            // Only fetch user data on login or initial session load (page refresh)
+            // Skip TOKEN_REFRESHED and other events to avoid unnecessary refetches
+            if ((_event === 'SIGNED_IN' || _event === 'INITIAL_SESSION') && newSession && !user) {
+                console.log("Login/page refresh detected, fetching user data");
                 try {
                     const exists = await userExists(newSession.user.id);
                     console.log("User exists:", exists);
@@ -84,15 +86,15 @@ function App() {
                     console.error("Error in onAuthStateChange user fetch:", err);
                 }
 
-            } else {
-                console.log("No session in auth state change, clearing user");
+            } else if (!newSession) {
+                console.log("Session ended, clearing user");
                 setUser(null);
             }
         })
 
-        //Maybe remove?
+        // Cleanup function: unsubscribe from auth changes when component unmounts
         return () => subscription.unsubscribe();
-    }, []);
+    }, [user]);
 
 
     // We need to find a way to say can't log in or log in failed
