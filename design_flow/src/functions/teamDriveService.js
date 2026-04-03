@@ -9,7 +9,7 @@ import {
   createAssignmentFolder,
   shareWithUser,
   shareWithMultipleUsers,
-} from './driveService';
+} from '../services/driveService';
 
 // ============================================================
 // Team Creation + Drive Folder
