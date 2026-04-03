@@ -91,7 +91,7 @@ function App() {
 
         // Cleanup function: unsubscribe from auth changes when component unmounts
         return () => subscription.unsubscribe();
-    }, [user]);
+    }, []);
 
 
     // We need to find a way to say can't log in or log in failed
