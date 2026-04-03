@@ -3,7 +3,7 @@ import {useParams} from 'react-router-dom'
 import {getTeam, getMembers} from './database.js'
 
 function TeamHomePage() {
-    const [team, setTeams] = useState([]);
+    const [teams, setTeams] = useState([]);
     const [members, setMembers] = useState([]);
     const [assignments, setAssignments] = useState();
 
@@ -39,7 +39,7 @@ function TeamHomePage() {
         <div>
             <div>
                 <p>Team Description</p>
-                <p>{team.teams?.desc}</p>
+                <p>{teams.teams?.desc}</p>
             </div>
             <div>
                 <p>Important Documents</p>

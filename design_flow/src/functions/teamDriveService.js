@@ -3,7 +3,7 @@
 // Use these functions instead of raw Supabase inserts when creating
 // teams or assignments, so Drive folders are always created in sync.
 
-import supabase from '../supabaseClient';
+import {supabase} from '../supabaseClient';
 import {
   createTeamFolders,
   createAssignmentFolder,
