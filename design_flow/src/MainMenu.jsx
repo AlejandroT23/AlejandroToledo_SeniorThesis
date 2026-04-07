@@ -1,5 +1,6 @@
 import {useState, useEffect, useContext} from "react"
 import {useNavigate} from 'react-router-dom'
+import {supabase} from './supabaseClient.js'
 import AuthContext from './AuthContext.jsx';
 import {getUserTeams, getMostRecentDeadlines} from './database.js';
 
@@ -23,6 +24,10 @@ function MainMenu() {
     const handleTeamCreated = (newTeam) => {
         setTeams((prev) => [...prev, newTeam]);
     };
+
+    const handleLogout = async () => {
+        await supabase.auth.signOut();
+    }
 
     useEffect(() => {
         if(user) {
@@ -56,7 +61,9 @@ function MainMenu() {
                     <div>
                         {/* Profile Pic: Pic then Profile */}
                         <div></div>
-                        <div></div>
+                        <div>
+                            <button onClick={handleLogout}>Log Out</button>
+                        </div>
                     </div>
                 </div>
                 {/* Main */}
