@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { createTeamWithDrive } from './functions/teamDriveService';
 import useDriveToken from './operations/hooks/useDriveToken';
-// import './styles/CreateTeamModal.css';
+// import './styles/createTeamModal.css';
 
 const COLOR_OPTIONS = [
   '#FF5733', '#E74C3C', '#9B59B6', '#8E44AD',
@@ -22,7 +22,9 @@ function CreateTeamModal({ isOpen, onClose, userId, onTeamCreated }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  if (!isOpen) return null;
+  if (!isOpen) {
+    return null;
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();

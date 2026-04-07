@@ -31,7 +31,9 @@ function MainMenu() {
                 console.log("Teams error:", error);
                 
                 if (data) {
-                    setTeams(data);
+                    setTeams(data.map(item => item.teams))
+                    
+                    // setTeams(data);
                 }
             });
 
