@@ -4,7 +4,7 @@ function TeamComponent({teams, onTeamClick}) {
     return(
         <div>
             {teams.map((team, index) => (
-                <div key={index} onClick={()=>onTeamClick(team.teams?.id)}>
+                <div key={index} onClick={()=>onTeamClick(team.id)}>
                     <p>{team.team_name}</p>
                     <p>{team.deadline}</p>
                     <p>{team.desc}</p>
