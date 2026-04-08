@@ -101,4 +101,51 @@ export async function getMembers(TeamId) {
     return {data, error}
 }
 
+// -- VERSIONS -- //
 
+export async function createVersion({assignment_id, uploaded_by, title, description, version_number, drive_folder_id}) {
+    const {data, error} = await supabase
+        .from('versions')
+        .insert({assignment_id, uploaded_by, title, description, version_number, drive_folder_id})
+        .select()
+        .single();
+    return {data, error};
+}
+
+export async function getVersionsByAssignment(assignment_id) {
+    const {data, error} = await supabase
+        .from('versions')
+        .select('*')
+        .eq('assignment_id', assignment_id)
+        .order('version_number', {ascending: true});
+    return {data, error};
+}
+
+// THINK MORE ABOUT THIS ONE
+// export async function getNextVersionNumber(assignment_id) {
+//     const {data, error} = await supabase
+//         .from()
+//     return {data, error};
+// }
+
+// -- WORKFLOW MESSAGE -- //
+
+export async function createWorkflowMessage({assignment_id, user_id, type, content, version_id}) {
+    const {data, error} = await supabase
+        .from('workflow_messages')
+        .insert({assignment_id, user_id, type, content, version_id})
+        .select()
+        .single();
+    return {data, error};
+}
+
+export async function getWorkflowMessages(assignment_id) {
+    const {data, error} = await supabase
+        .from('workflow_messages')
+        .select('*')
+        .eq('assignment_id', assignment_id)
+        .single()
+    return {data, error};
+}
+
+// MAYBE CREATE LOG TABLE THAT KEEPS TRACK OF ORDER SO IT CAN BE DISPLAYED?
