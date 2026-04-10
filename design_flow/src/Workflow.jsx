@@ -1,11 +1,10 @@
 import {useState, useEffect} from 'react'
-import {createWorkflowMessages, getWorkflowMessages} from '/database.js'
+import {createWorkflowMessages, getWorkflowMessages} from './database.js'
 import {useParams, useNavigate} from 'react-router-dom'
 
 function Workflow() {
     
     const [chatlog, setChatlog] = useState([]);
-
 
     useEffect(() => {
         getWorkflowMessages().then(({data, error}) => {
