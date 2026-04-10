@@ -6,6 +6,7 @@ import Test from './testpage.jsx';
 import LoginPage from './login.jsx';
 import MainMenu from './MainMenu.jsx';
 import TeamHomePage from './TeamHomePage.jsx';
+import Workflow from './Workflow.jsx';
 // import MainMenu from './main.jsx';
 import {useState, useEffect} from 'react';
 import {createUser, userExists, getUser, getSession} from './database.js'
