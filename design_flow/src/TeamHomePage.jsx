@@ -6,7 +6,7 @@ import AssignmentComponent from './AssignmentComponent.jsx';
 function TeamHomePage() {
     const [teams, setTeams] = useState([]);
     const [members, setMembers] = useState([]);
-    const [assignments, setAssignments] = useState();
+    const [assignments, setAssignments] = useState([]);
 
     const {teamId} = useParams();
 
