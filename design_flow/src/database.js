@@ -157,6 +157,5 @@ export async function getAssignments(team_id) {
         .from('assignments')
         .select('*')
         .eq('team_id', team_id)
-        .single()
     return {data, error};
 }
