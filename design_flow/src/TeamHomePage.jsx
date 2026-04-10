@@ -11,7 +11,7 @@ function TeamHomePage() {
     // const {teamId} = useParams();
     
     const {teamId: team_str} = useParams();
-    teamId = Number(team_str)
+    const teamId = Number(team_str);
 
 
     useEffect(() => {
