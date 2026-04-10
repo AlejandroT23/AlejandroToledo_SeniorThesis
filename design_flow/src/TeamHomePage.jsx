@@ -8,7 +8,11 @@ function TeamHomePage() {
     const [members, setMembers] = useState([]);
     const [assignments, setAssignments] = useState([]);
 
-    const {teamId} = useParams();
+    // const {teamId} = useParams();
+    
+    const {teamId: team_str} = useParams();
+    teamId = Number(team_str)
+
 
     useEffect(() => {
         getTeam(teamId).then(({data, error}) => {
@@ -30,6 +34,8 @@ function TeamHomePage() {
         getAssignments(teamId).then(({data, error}) => {
             if (data) {
                 setAssignments(data)
+                console.log("Assignment Data: ", data)
+                console.log("Error: ", error)
             } else {
                 console.log("Error: ", error)
             }
