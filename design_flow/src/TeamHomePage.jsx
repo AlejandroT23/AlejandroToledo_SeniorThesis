@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
-import {getTeam, getMembers} from './database.js'
+import {getTeam, getMembers, getAssignments} from './database.js'
+import AssignmentComponent from './AssignmentComponent.jsx';
 
 function TeamHomePage() {
     const [teams, setTeams] = useState([]);
@@ -26,6 +27,14 @@ function TeamHomePage() {
             }
         })
 
+        getAssignments(teamId).then(({data, error}) => {
+            if (data) {
+                setAssignments(data)
+            } else {
+                console.log("Error: ", error)
+            }
+        })
+
         // set the members
         // set the assignments
 
@@ -44,6 +53,24 @@ function TeamHomePage() {
             <div>
                 <p>Important Documents</p>
             </div>
+        </div>
+        <div>
+            <p>Assignments</p>
+            <AssignmentComponent 
+                assignments={assignments}
+                onAssignmentClick={(teamId, assignmentId) => navigate(`/team/${teamId}/${assignmentId}`)}
+            />
+            {/* <button onClick = {() => navigate(`/team/${teamId}/home`)}>
+                Go to Home Page
+            </button> */}
+
+            {/* <div onClick>
+                {assignments.map((project, index) => (
+                    <div> key={index}
+                        {project}
+                    </div>
+                ))}
+            </div> */}
         </div>
         <div>
             <p>Team Members</p>

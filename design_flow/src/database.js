@@ -149,3 +149,14 @@ export async function getWorkflowMessages(assignment_id) {
 }
 
 // MAYBE CREATE LOG TABLE THAT KEEPS TRACK OF ORDER SO IT CAN BE DISPLAYED?
+
+// -- ASSIGNMENTS
+
+export async function getAssignments(team_id) {
+    const {data, error} = await supabase
+        .from('assignments')
+        .select('*')
+        .eq('team_id', team_id)
+        .single()
+    return {data, error};
+}

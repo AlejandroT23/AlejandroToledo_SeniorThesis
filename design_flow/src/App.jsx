@@ -109,6 +109,7 @@ function App() {
                     <Route path="/" element={<MainMenu />} />
                     <Route path="/team/:teamId" element={<Test />} />
                     <Route path="/team/:teamId/home" element={<TeamHomePage />} />
+                    <Route path="/team/:teamId/:assignment" element={<Workflow />} />
                 </Routes>
             </BrowserRouter>
         </AuthContext.Provider>
