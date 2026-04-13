@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import {useParams} from 'react-router-dom'
+import {useParams, useNavigate} from 'react-router-dom'
 import {getTeam, getMembers, getAssignments} from './database.js'
 import AssignmentComponent from './AssignmentComponent.jsx';
 
@@ -14,6 +14,7 @@ function TeamHomePage() {
     const teamId = Number(team_str);
     console.log('Team Id Type: ', typeof teamId);
 
+    const navigate = useNavigate();
 
     useEffect(() => {
         getTeam(teamId).then(({data, error}) => {
