@@ -155,7 +155,7 @@ export async function getWorkflowMessages(assignment_id) {
 export async function getAssignments(team_id) {
     
     console.log("team_id type: ", typeof team_id);
-    
+    console.log("team_id value: ", team_id);
     
     const {data, error} = await supabase
         .from('assignments')
