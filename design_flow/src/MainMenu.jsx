@@ -82,7 +82,7 @@ function MainMenu() {
                             <div>
                                 <TeamComponent
                                     teams={teams}
-                                    onTeamClick={(teamId) => navigate(`/team/${teamId}`)}
+                                    onTeamClick={(teamId) => navigate(`/team/${teamId}/home`)}
                                 />
                             </div>
                             <div>
