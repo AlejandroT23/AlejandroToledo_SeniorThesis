@@ -12,6 +12,7 @@ function TeamHomePage() {
     
     const {teamId: team_str} = useParams();
     const teamId = Number(team_str);
+    console.log('Team Id Type: ', typeof teamId);
 
 
     useEffect(() => {
