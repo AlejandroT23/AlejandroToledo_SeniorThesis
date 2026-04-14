@@ -144,13 +144,12 @@ export async function getWorkflowMessages(assignment_id) {
         .from('workflow_messages')
         .select('*')
         .eq('assignment_id', assignment_id)
-        .single()
     return {data, error};
 }
 
 // MAYBE CREATE LOG TABLE THAT KEEPS TRACK OF ORDER SO IT CAN BE DISPLAYED?
 
-// -- ASSIGNMENTS
+// -- ASSIGNMENTS -- //
 
 export async function getAssignments(team_id) {
     
@@ -162,4 +161,47 @@ export async function getAssignments(team_id) {
         .select('*')
         .eq('team_id', team_id)
     return {data, error};
+}
+
+// -- TASKS -- //
+
+export async function getTasks(assignment_id) {
+    const {data, error} = await supabase
+        .from('tasks')
+        .select('*')
+        .eq('assignment_host', assignment_id)
+    return {data, error};
+}
+
+export async function createTasks(name, deadline, assignment_id) {
+    const {data, error} = await supabase
+        .from('tasks')
+        .insert({name, assignment_id})
+        .select()
+        .single();
+    return {data, error}
+}
+
+export async function updateTask(task_id, updated_val) {
+    const {data, error} = await supabase
+        .from('task')
+        .update({is_completed: updated_val})
+        .eq('id', task_id)
+        .select()
+        .single();
+    return {data, error}
+}
+
+export async function deleteTask(task_id) {
+    const {error} = await supabase
+        .from('task')
+        .delete()
+        .eq('')
+
+    if (error) {
+        console.log("Error: ", error)
+        return {error}
+    }
+
+    return {error: null}
 }
