@@ -1,10 +1,27 @@
-function TaskList({tasks}) {
+function TaskList({tasks, onToggle, deleteMode, onSelectTask}) {
     return(
         <div>
             {tasks.map((task, index) => (
-                <div key={index}>
+                <div
+                    key={index}
+                    onClick={() => deleteMode ? onSelectTask(task) : null}
+                    style={{ cursor: deleteMode ? "pointer" : "default" }}
+                >
                     {task.name}
-                    <button></button>
+                    <button
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            if (!deleteMode) onToggle(task);
+                        }}
+                        disabled={deleteMode}
+                        style = {{
+                            width: "24px",
+                            height: "24px",
+                            borderRadius: "50%",
+                            border: "2px solid gray",
+                            backgroundColor: task.is_completed ? "grey" : "transparent",
+                        }}
+                    />
                 </div>
             ))}
         </div>

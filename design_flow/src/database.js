@@ -185,7 +185,7 @@ export async function createTasks(name, deadline, assignment_id) {
 export async function updateTask(task_id, updated_val) {
     const {data, error} = await supabase
         .from('task')
-        .update({is_completed: updated_val})
+        .update({is_completed: !updated_val})
         .eq('id', task_id)
         .select()
         .single();
