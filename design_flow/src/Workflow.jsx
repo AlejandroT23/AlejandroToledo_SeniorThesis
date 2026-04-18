@@ -77,7 +77,7 @@ function Workflow() {
     }, [])
 
     return (<>
-        <button onClick={() => navigate(`/team/${teamId}`)}>Back</button>
+        <button onClick={() => navigate(`/team/${team_id}`)}>Back</button>
         <h1>THIS IS THE ASSIGNMENT WORKFLOW</h1>
         <div>
             {/* upload bar */}
