@@ -169,7 +169,7 @@ export async function getTasks(assignment_id) {
     const {data, error} = await supabase
         .from('tasks')
         .select('*')
-        .eq('assignment_host', assignment_id)
+        .eq('assignment_id', assignment_id)
     return {data, error};
 }
 
