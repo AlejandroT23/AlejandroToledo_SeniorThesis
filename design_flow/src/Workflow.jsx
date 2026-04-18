@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import {createWorkflowMessages, getWorkflowMessages, getTask, createTasks, updateTask, deleteTask} from './database.js'
+import {createWorkflowMessages, getWorkflowMessages, getTasks, createTasks, updateTask, deleteTask} from './database.js'
 import {useParams, useNavigate} from 'react-router-dom'
 
 import TaskList from './TaskList.jsx'
@@ -59,7 +59,7 @@ function Workflow() {
             }
         })
 
-        getTask(assignment_id).then(({data, error}) => {
+        getTasks(assignment_id).then(({data, error}) => {
             if (data) {
                 setTasks(data)
             } else {
