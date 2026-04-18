@@ -12,6 +12,9 @@ function Workflow() {
     const {assignment: assignment_str, team: team_str}  = useParams();
     const assignment_id = Number(assignment_str);
     const team_id = Number(team_str);
+
+    console.log("assignment id: ", assignment_id)
+    console.log("team id: ", team_id);
     
     const [chatlog, setChatlog] = useState([]);
     const [tasks, setTasks] = useState([]);
