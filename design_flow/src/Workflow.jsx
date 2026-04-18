@@ -111,7 +111,7 @@ function Workflow() {
                             isOpen = {showDeleteTaskModal}
                             onClose = {() => setShowDeleteTaskModal(false)}
                             assignmentId = {assignment_id}
-                            onTaskDeleted = {handleTaskDeleted}
+                            onTaskDeleted = {handleDeletedTask}
                         />
                     )}
                 </div>
