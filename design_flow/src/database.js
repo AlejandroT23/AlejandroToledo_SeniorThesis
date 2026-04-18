@@ -173,7 +173,7 @@ export async function getTasks(assignment_id) {
     return {data, error};
 }
 
-export async function createTasks(name, deadline, assignment_id) {
+export async function createTasks(name, assignment_id) {
     const {data, error} = await supabase
         .from('tasks')
         .insert({name, assignment_id})
