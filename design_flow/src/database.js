@@ -184,7 +184,7 @@ export async function createTasks(name, assignment_id) {
 
 export async function updateTask(task_id, updated_val) {
     const {data, error} = await supabase
-        .from('task')
+        .from('tasks')
         .update({is_completed: !updated_val})
         .eq('id', task_id)
         .select()
@@ -194,9 +194,9 @@ export async function updateTask(task_id, updated_val) {
 
 export async function deleteTask(task_id) {
     const {error} = await supabase
-        .from('task')
+        .from('tasks')
         .delete()
-        .eq('')
+        .eq('id', task_id)
 
     if (error) {
         console.log("Error: ", error)
