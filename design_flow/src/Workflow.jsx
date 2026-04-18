@@ -12,8 +12,12 @@ function Workflow() {
     
     const [chatlog, setChatlog] = useState([]);
     const [tasks, setTasks] = useState([]);
+    
+    // We don't use these here, so we might deleted once it works
     const [modalOpen, setModalOpen] = useState(false);
     const [modalMode, setModalMode] = useState(null);
+    // ===========
+
     const [deleteMode, setDeleteMode] = useState(false);
     const [selectedTask, setSelectedTask] = useState(null);
 
@@ -110,7 +114,7 @@ function Workflow() {
                         <DeleteTaskModal 
                             isOpen = {showDeleteTaskModal}
                             onClose = {() => setShowDeleteTaskModal(false)}
-                            assignmentId = {assignment_id}
+                            task = {selectedTask}
                             onTaskDeleted = {handleDeletedTask}
                         />
                     )}
