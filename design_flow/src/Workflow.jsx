@@ -9,7 +9,7 @@ import DeleteTaskModal from './DeleteTaskListModal.jsx'
 function Workflow() {
     const navigate = useNavigate();
     
-    const {assignment: assignment_str, team: team_str}  = useParams();
+    const {teamId: team_str, assignment: assignment_str}  = useParams();
     const assignment_id = Number(assignment_str);
     const team_id = Number(team_str);
 
