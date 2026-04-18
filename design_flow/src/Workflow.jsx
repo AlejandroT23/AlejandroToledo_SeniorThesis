@@ -7,8 +7,11 @@ import CreateTaskListModal from './CreateTaskListModal.jsx'
 import DeleteTaskModal from './DeleteTaskListModal.jsx'
 
 function Workflow() {
-    const {assignment: assignment_str}  = useParams();
+    const navigate = useNavigate();
+    
+    const {assignment: assignment_str, team: team_str}  = useParams();
     const assignment_id = Number(assignment_str);
+    const team_id = Number(team_str);
     
     const [chatlog, setChatlog] = useState([]);
     const [tasks, setTasks] = useState([]);
@@ -74,6 +77,7 @@ function Workflow() {
     }, [])
 
     return (<>
+        <button onClick={() => navigate(`/team/${teamId}`)}>Back</button>
         <h1>THIS IS THE ASSIGNMENT WORKFLOW</h1>
         <div>
             {/* upload bar */}
