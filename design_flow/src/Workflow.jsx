@@ -80,12 +80,12 @@ function Workflow() {
     }, [])
 
     return (<>
-        <button onClick={() => navigate(`/team/${team_id}`)}>Back</button>
+        <button onClick={() => navigate(`/team/${team_id}/home`)}>Back</button>
         <h1>THIS IS THE ASSIGNMENT WORKFLOW</h1>
         <div>
             {/* upload bar */}
             <div>
-
+[]
             </div>
             {/* chat log */}
             <div>
