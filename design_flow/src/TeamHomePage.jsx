@@ -2,17 +2,23 @@ import {useState, useEffect} from 'react'
 import {useParams, useNavigate} from 'react-router-dom'
 import {getTeam, getMembers, getAssignments} from './database.js'
 import AssignmentComponent from './AssignmentComponent.jsx';
+import CreateAssignmentModal from './CreateAssignmentModal.jsx'
 
 function TeamHomePage() {
     const [teams, setTeams] = useState([]);
     const [members, setMembers] = useState([]);
     const [assignments, setAssignments] = useState([]);
+    const [showCreateModal, setShowCreateModal] = useState(false);
 
     // const {teamId} = useParams();
     
     const {teamId: team_str} = useParams();
     const teamId = Number(team_str);
     console.log('Team Id Type: ', typeof teamId);
+
+    const handleAssignmentCreated = (newAssignment) => {
+        setAssignments((prev) => [...prev, newAssignment])
+    }
 
     const navigate = useNavigate();
 
@@ -63,22 +69,26 @@ function TeamHomePage() {
             </div>
         </div>
         <div>
-            <p>Assignments</p>
-            <AssignmentComponent 
-                assignments={assignments}
-                onAssignmentClick={(teamId, assignmentId) => navigate(`/team/${teamId}/${assignmentId}`)}
-            />
-            {/* <button onClick = {() => navigate(`/team/${teamId}/home`)}>
-                Go to Home Page
-            </button> */}
-
-            {/* <div onClick>
-                {assignments.map((project, index) => (
-                    <div> key={index}
-                        {project}
-                    </div>
-                ))}
-            </div> */}
+            <div>
+                <p>Assignments</p>
+                <AssignmentComponent 
+                    assignments={assignments}
+                    onAssignmentClick={(teamId, assignmentId) => navigate(`/team/${teamId}/${assignmentId}`)}
+                />
+            </div>
+            <div>
+                <button onClick = {() => setShowCreateModal(true)}>
+                    + Create Assignment
+                </button>
+                {teams && (
+                    <CreateAssignmentModal
+                        isOpen={showCreateModal}
+                        onClose={() => setShowCreateModal(false)}
+                        teamId={teamId}
+                        onAssignmentCreated={handleAssignmentCreated}
+                    />
+                )}
+            </div>
         </div>
         <div>
             <p>Team Members</p>
@@ -108,3 +118,8 @@ export default TeamHomePage
 //                         <p>{team.teams?.color}</p>
 //                     </div>
 //                 ))}
+
+
+// ===========
+// I NEED A WAY TO CREATE ASSIGNMENTS
+// ===========

@@ -165,7 +165,7 @@ export async function createVersionWithDrive(versionData, assignmentDriveFolderI
       description: versionData.description,
       version_number: versionData.version_number,
       // drive_folder_id: versionData.drive_folder_id,
-      status: versionData.status,
+      // status: versionData.status,
       type: versionData.type,
       file_name: versionData.file_name
     })

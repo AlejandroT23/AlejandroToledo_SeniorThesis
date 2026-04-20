@@ -1,6 +1,7 @@
 import {useState, useRef} from 'react';
 import {createVersionWithDrive} from './functions/teamDriveService';
 import useDriveToken from './operations/hooks/useDriveToken'
+import { getNextVersionNumber } from './database';
 
 function UploadModal({assignment_id, assignmentDriveFolder_id, userId, onUpload_complete}) {
     const {getToken} = useDriveToken();
@@ -9,6 +10,7 @@ function UploadModal({assignment_id, assignmentDriveFolder_id, userId, onUpload_
     const [files, setFiles] = useState([]);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState("");
+    // const [version_num, setVersionNum] = useState(0);
     const [isLoading, setLoading] = useState(false);
     const [error, setError] = useState(null)
 
@@ -42,15 +44,17 @@ function UploadModal({assignment_id, assignmentDriveFolder_id, userId, onUpload_
                 return;
             }
 
-            // Figure out status and version_number
-            const version = await createVersionWithDrive(
+            const {data: version_number} = await getNextVersionNumber(assignment_id)
+
+            // Figure out status
+            const {version, driveFolder} = await createVersionWithDrive(
                 {
-                    assignment_id,
+                    assignment_id: assignment_id,
                     uploaded_by: userId,
                     title: title.trim(),
                     description: description.trim(),
                     type: 'upload',
-                    // version_number
+                    version_number: version_number,
                     // status
                     file_name: files.map(f => f.name)
                 },
@@ -59,12 +63,15 @@ function UploadModal({assignment_id, assignmentDriveFolder_id, userId, onUpload_
                 files
             )
 
+            console.log('Version created: ', version);
+            console.log('Folder created: ', driveFolder);
+
             setTitle('');
             setDescription('');
             setFiles([]);
 
             if (onUpload_complete) {
-                onUpload_complete(version) // ADD DATA FROM IT'S LINE
+                onUpload_complete(version)
             }
         
         } catch(err) {
@@ -107,7 +114,7 @@ function UploadModal({assignment_id, assignmentDriveFolder_id, userId, onUpload_
 
                 </div>
                 {/* submit button*/}
-                <button> Submit </button>
+                <button onClick={handleUpload}> Submit </button>
             </div>
         </div>
     </>)

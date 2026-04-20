@@ -62,6 +62,15 @@ export async function getUserTeams(userID) {
     return {data, error};
 }
 
+export async function getTeamDriveFolderLocation(teamID) {
+    const {data, error} = await supabase
+        .from('teams')
+        .select('drive_folder_id')
+        .eq('id', teamID)
+        .single()
+    return {data: data?.drive_folder_id, error}
+}
+
 // ===
 // DEADLINE TABLE
 // ===
@@ -121,12 +130,19 @@ export async function getVersionsByAssignment(assignment_id) {
     return {data, error};
 }
 
-// THINK MORE ABOUT THIS ONE
-// export async function getNextVersionNumber(assignment_id) {
-//     const {data, error} = await supabase
-//         .from()
-//     return {data, error};
-// }
+export async function getNextVersionNumber(assignment_id) {
+    const {data, error} = await supabase
+        .from('versions')
+        .select(version.version_number)
+        .eq('assignment_id', assignment_id)
+        .order('version_number', {ascending: false})
+        .limit(1)
+        .maybeSingle()
+
+    const nextVersion = data ? data.version_number + 1 : 1;
+    
+    return {data: nextVersion, error};
+}
 
 // -- WORKFLOW MESSAGE -- //
 
