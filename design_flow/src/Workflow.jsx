@@ -1,13 +1,16 @@
-import {useState, useEffect} from 'react'
-import {createWorkflowMessages, getWorkflowMessages, getTasks, createTasks, updateTask, deleteTask} from './database.js'
+import {useState, useEffect, useContext} from 'react'
+import {createWorkflowMessages, getWorkflowMessages, getTasks, createTasks, updateTask, deleteTask, getAssignmentDriveFolderLocation} from './database.js'
 import {useParams, useNavigate} from 'react-router-dom'
 
 import TaskList from './TaskList.jsx'
 import CreateTaskListModal from './CreateTaskListModal.jsx'
 import DeleteTaskModal from './DeleteTaskListModal.jsx'
+import UploadModal from './UploadModal.jsx'
+import AuthContext from './AuthContext.jsx'
 
 function Workflow() {
     const navigate = useNavigate();
+    const user = useContext(AuthContext)
     
     const {teamId: team_str, assignment: assignment_str}  = useParams();
     const assignment_id = Number(assignment_str);
@@ -18,6 +21,7 @@ function Workflow() {
     
     const [chatlog, setChatlog] = useState([]);
     const [tasks, setTasks] = useState([]);
+    const [assignmentFolder, setAssignmentFolder] = useState(null);
     
     // We don't use these here, so we might deleted once it works
     const [modalOpen, setModalOpen] = useState(false);
@@ -60,6 +64,10 @@ function Workflow() {
         setSelectedTask(null)
     }
 
+    const handleUpload = (newUpload) => {
+        setChatlog((prev) => [...prev, newUpload])
+    }
+
     useEffect(() => {
         getWorkflowMessages(assignment_id).then(({data, error}) => {
             if (data) {
@@ -77,6 +85,14 @@ function Workflow() {
             }
         })
 
+        getAssignmentDriveFolderLocation(assignment_id).then(({data, error}) => {
+            if (data) {
+                setAssignmentFolder(data)
+            } else {
+                console.log('error: ', error)
+            }
+        })
+
     }, [])
 
     return (<>
@@ -85,7 +101,12 @@ function Workflow() {
         <div>
             {/* upload bar */}
             <div>
-[]
+                <UploadModal
+                    assignment_id={assignment_id}
+                    assignmentDriveFolder_id={assignmentFolder}
+                    userId={user?.id}
+                    onUpload_complete={handleUpload}
+                />
             </div>
             {/* chat log */}
             <div>

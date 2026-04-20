@@ -107,11 +107,28 @@ function UploadModal({assignment_id, assignmentDriveFolder_id, userId, onUpload_
             <div>
                 {/* title */}
                 <div>
-
+                    <label htmlFor="title">Upload Title</label>
+                    <input
+                        id = "title"
+                        type = "text"
+                        value = {title}
+                        onChange = {(e) => setTitle(e.target.value)}
+                        placeholder = "Title Here"
+                        maxLength = {100}
+                        autoFocus
+                    />
                 </div>
                 {/* desc. */}
                 <div>
-
+                    <label htmlFor="description">Description</label>
+                    <textarea
+                        id = "description"
+                        value = {description}
+                        onChange = {(e) => setDescription(e.target.value)}
+                        placeholder = "Brief description of this upload"
+                        row = {3}
+                        maxLength = {500}
+                    />
                 </div>
                 {/* submit button*/}
                 <button onClick={handleUpload}> Submit </button>

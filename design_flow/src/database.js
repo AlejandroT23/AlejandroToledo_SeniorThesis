@@ -133,7 +133,7 @@ export async function getVersionsByAssignment(assignment_id) {
 export async function getNextVersionNumber(assignment_id) {
     const {data, error} = await supabase
         .from('versions')
-        .select(version.version_number)
+        .select('version_number')
         .eq('assignment_id', assignment_id)
         .order('version_number', {ascending: false})
         .limit(1)
@@ -142,6 +142,15 @@ export async function getNextVersionNumber(assignment_id) {
     const nextVersion = data ? data.version_number + 1 : 1;
     
     return {data: nextVersion, error};
+}
+
+export async function getAssignmentDriveFolderLocation(assignmentID) {
+    const {data, error} = await supabase
+        .from('assignment')
+        .select('drive_folder_id')
+        .eq('id', assignmentID)
+        .single()
+    return {data: data?.drive_folder_id, error}
 }
 
 // -- WORKFLOW MESSAGE -- //
