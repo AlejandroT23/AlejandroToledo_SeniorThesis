@@ -136,3 +136,5 @@ function UploadModal({assignment_id, assignmentDriveFolder_id, userId, onUpload_
         </div>
     </>)
 }
+
+export default UploadModal;
