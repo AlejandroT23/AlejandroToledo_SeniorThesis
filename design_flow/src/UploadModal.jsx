@@ -1,7 +1,11 @@
-import {useState} from 'react'
-
+import {useState, useRef} from 'react';
+import {createVersionWithDrive} from './functions/teamDriveService';
+import useDriveToken from './operations/hooks/useDriveToken'
 
 function UploadModal({assignment_id, assignmentDriveFolder_id, userId, onUpload_complete}) {
+    const {getToken} = useDriveToken();
+    const fileInputRef = useRef(null)
+    
     const [files, setFiles] = useState([]);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState("");
@@ -22,27 +26,75 @@ function UploadModal({assignment_id, assignmentDriveFolder_id, userId, onUpload_
             return;
         }
 
-        setLoading(true);
-
-        // THIS IS WHERE THE DRIVE TOKEN WILL BE ADDED
-
-        // DATA GOES HERE : WRITE FUNCTION TO HANDLE UPLOADS - I BELIEVE THIS IS VERSIONS BUT I WOULD NEED TO DOUBLE CHECK
-
-        setTitle('');
-        setDescription('');
-
-        if (onUpload_complete) {
-            onUpload_complete() // ADD DATA FROM IT'S LINE
+        if (files.length === 0) {
+            setError('Please select at least one file')
+            return;
         }
 
-        setLoading(false);
+        setLoading(true);
+
+        try {
+            const driveToken = await getToken();
+
+            if (!driveToken) {
+                setError('Could not retrieve Google Drive Access. Please log out and try again');
+                setLoading(false);
+                return;
+            }
+
+            // Figure out status and version_number
+            const version = await createVersionWithDrive(
+                {
+                    assignment_id,
+                    uploaded_by: userId,
+                    title: title.trim(),
+                    description: description.trim(),
+                    type: 'upload',
+                    // version_number
+                    // status
+                    file_name: files.map(f => f.name)
+                },
+                assignmentDriveFolder_id,
+                driveToken,
+                files
+            )
+
+            setTitle('');
+            setDescription('');
+            setFiles([]);
+
+            if (onUpload_complete) {
+                onUpload_complete(version) // ADD DATA FROM IT'S LINE
+            }
+        
+        } catch(err) {
+            console.error('Failed to upload: ', err)
+            setError(err.message || 'Something went wrong. Please try again.')
+        } finally {
+            setLoading(false);
+        }        
     }
 
     return(<>
         <div>
             {/* file display */}
-            <div>
-                
+            <div onClick={() => fileInputRef.current.click()}>
+                <input
+                    type="file"
+                    multiple
+                    ref={fileInputRef}
+                    style={{display: 'none'}}
+                    onChange={(e) => setFiles(Array.from(e.target.files))}
+                />
+                {files.length === 0 ? (
+                    <p>Click to upload files</p>
+                ) : (
+                    files.map((file, index) => (
+                        <div key={index}>
+                            <p>{file.name}</p>
+                        </div>
+                    ))
+                )}
             </div>
             {/* upload desc. hub */}
             <div>

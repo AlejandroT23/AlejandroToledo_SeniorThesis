@@ -99,8 +99,8 @@ export async function createAssignmentFolder(token, assignmentName, teamFolderId
  * @param {number} versionNumber
  * @returns {{ id: string, name: string }}
  */
-export async function createVersionFolder(token, assignmentFolderId, versionNumber) {
-  return createFolder(token, `v${versionNumber}`, assignmentFolderId);
+export async function createVersionFolder(token, title, assignmentFolderId) {
+  return createFolder(token, title, assignmentFolderId);
 }
 
 // ============================================================

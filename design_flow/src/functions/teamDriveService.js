@@ -7,8 +7,10 @@ import {supabase} from '../supabaseClient';
 import {
   createTeamFolders,
   createAssignmentFolder,
+  createVersionFolder,
   shareWithUser,
   shareWithMultipleUsers,
+  uploadFiles
 } from '../services/driveService';
 
 // ============================================================
@@ -144,6 +146,59 @@ export async function createAssignmentWithDrive(assignmentData, teamDriveFolderI
 
   return { assignment, driveFolder };
 }
+// ============================================================
+// Version Creation + Drive Folder
+// ============================================================
+
+/**
+ * @param {object} versionData
+ * @param {string} assignmentDriveFolderId
+ * @param {string} driveToken
+ */
+export async function createVersionWithDrive(versionData, assignmentDriveFolderId, driveToken, files) {
+  const {data: version, error: versionError} = await supabase
+    .from('versions')
+    .insert({
+      assignment_id: versionData.assignment_id,
+      uploaded_by: versionData.uploaded_by,
+      title: versionData.title,
+      description: versionData.description,
+      version_number: versionData.version_number,
+      // drive_folder_id: versionData.drive_folder_id,
+      status: versionData.status,
+      type: versionData.type,
+      file_name: versionData.file_name
+    })
+    .select()
+    .single();
+
+  if (versionError) throw new Error(`Failed to create version: ${versionError.message}`);
+
+  let driveFolder = null;
+  if (driveToken && assignmentDriveFolderId) {
+    try {
+      driveFolder = await createVersionFolder(driveToken, versionData.title, assignmentDriveFolderId); 
+
+      const {error: updateError} = await supabase
+        .from('versions')
+        .update({drive_folder_id: driveFolder.id})
+        .eq('id', version.id);
+
+      if (updateError) {
+        console.warn('Version created but failed to save Drive Folder ID: ', updateError)
+      }
+
+      await uploadFiles(driveToken, files, driveFolder.id);
+
+    } catch (driveError) {
+      console.error('Drive folder creation for version failed: ', driveError)
+    }
+  }
+
+  return {version, driveFolder}
+}
+
+ 
 
 // ============================================================
 // Member Sharing (Day 3 prep)
