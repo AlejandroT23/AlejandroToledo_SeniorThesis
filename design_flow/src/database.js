@@ -146,7 +146,7 @@ export async function getNextVersionNumber(assignment_id) {
 
 export async function getAssignmentDriveFolderLocation(assignmentID) {
     const {data, error} = await supabase
-        .from('assignment')
+        .from('assignments')
         .select('drive_folder_id')
         .eq('id', assignmentID)
         .single()
