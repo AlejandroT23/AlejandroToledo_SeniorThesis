@@ -70,14 +70,14 @@ function TeamHomePage() {
             {/* Info Section */}
             <div className="thPage_info">
                 <div>
-                    <h2>Team Description</h2>
-                    <div>
+                    <h2 className="thPage_mainHead">Team Description</h2>
+                    <div className="thPage_mainBody">
                         {teams?.desc}
                     </div>
                 </div>
                 <div>
-                    <h2>Team Members</h2>
-                    <div>
+                    <h2 className="thPage_mainHead">Team Members</h2>
+                    <div className="thPage_mainBody">
                         {members.map((member, index) => (
                             <div key={index}>
                                 <span>{member.users?.first_name} {member.users?.last_name}</span>
@@ -116,22 +116,3 @@ function TeamHomePage() {
 }
 
 export default TeamHomePage
-
-
-
-
-// {members.map((member, index) => (
-//                     <div key={index}>
-//                         <p>{member.team_members?.team_name}</p>
-//                         <p>{team.teams?.deadline}</p>
-//                         <p>{team.teams?.desc}</p>
-//                         <p>{team.teams?.admin}</p>
-//                         <p>{team.teams?.icon}</p>
-//                         <p>{team.teams?.color}</p>
-//                     </div>
-//                 ))}
-
-
-// ===========
-// I NEED A WAY TO CREATE ASSIGNMENTS
-// ===========

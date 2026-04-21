@@ -7,6 +7,18 @@
     flex-shrink: 0;
 }
 
+.thPage_mainHead {
+    font-family: Helvetica;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.thPage_mainBody {
+    font-family: Helvetica;
+    font-size: 16px;
+    font-weight: 300;
+}
+
 .thPage_backBtnSection {
     display: flex;
     justify-content: flex-start;
@@ -41,6 +53,7 @@
 }
 
 .thPage_assignSection {
+    padding: 20px;
     background-color: goldenrod;
     width: 35%; 
 }
