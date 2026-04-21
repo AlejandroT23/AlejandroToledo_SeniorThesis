@@ -47,13 +47,15 @@
 }
 
 .team_card_name {
+    font-family: Helvetica;
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .team_card_desc {
+    font-family: Helvetica;
     font-size: 14px;
-    font-weight: bold;
+    font-weight: 300;
     color: #333;
 }
 
