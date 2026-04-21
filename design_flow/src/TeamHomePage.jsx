@@ -78,11 +78,11 @@ function TeamHomePage() {
                 <div>
                     <h2>Team Members</h2>
                     <div>
-                        {members.map((member, index) => {
+                        {members.map((member, index) => (
                             <div key={index}>
                                 <span>{member.users?.first_name} {member.users?.last_name}</span>
                             </div>
-                        })}
+                        ))}
                     </div>
                 </div>
                 {/* <div>
