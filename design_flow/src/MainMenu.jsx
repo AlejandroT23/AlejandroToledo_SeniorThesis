@@ -55,12 +55,12 @@ function MainMenu() {
             {/* profile */}
             <div className="profile">
                 <div>
-                    <button onClick={handleLogout}>Log Out</button>
+                    <button className="logout_btn" onClick={handleLogout}>Log Out</button>
                 </div>
             </div>
             {/* Splash Text */}
             <div className="splash">
-                <h1>Welcome Back, User</h1>
+                <h1 className="splash_text">Welcome Back, User</h1>
             </div>
             {/* Main Body */}
             <div className="main_body">
