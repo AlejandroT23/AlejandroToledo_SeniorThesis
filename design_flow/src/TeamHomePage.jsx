@@ -56,6 +56,7 @@ function TeamHomePage() {
 
 
     return(<>
+        <button onClick={() => navigate(`/`)}>Back</button>
         <div>
             <p>HOME</p>
         </div>
