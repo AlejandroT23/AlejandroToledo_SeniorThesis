@@ -43,19 +43,20 @@
     flex-direction: row;
     width: 100%;
     height: 80%;
+    gap: 20px;
     background-color: aquamarine; 
 }
 
 .thPage_info {
     padding: 20px;
     background-color: darkolivegreen;
-    width: 65%;
+    width: 50%;
 }
 
 .thPage_assignSection {
     padding: 20px;
     background-color: goldenrod;
-    width: 35%; 
+    width: 50%; 
 }
 
 .thPage_backBtn {
