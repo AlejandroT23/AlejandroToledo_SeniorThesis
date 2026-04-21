@@ -56,16 +56,16 @@ function TeamHomePage() {
 
 
     return(<>
-        <div>
+        <div className="thPage_backBtn">
             <button onClick={() => navigate(`/`)}>Back</button>
         </div>
-        <div>
-            <h2>TEAM NAME</h2>
+        <div className="thPage_teamNameSection">
+            <h2 className="thPage_header">TEAM NAME</h2>
         </div>
         {/* Main Body */}
-        <div>
+        <div className="thPage_main">
             {/* Info Section */}
-            <div>
+            <div className="thPage_info">
                 <div>
                     <h2>Team Description</h2>
                     <div></div>
@@ -78,7 +78,7 @@ function TeamHomePage() {
                 </div> */}
             </div>
             {/* Assignment Section */}
-            <div>
+            <div className="thPage_assignSection">
                 <div>
                     <p>Assignments</p>
                     <AssignmentComponent 

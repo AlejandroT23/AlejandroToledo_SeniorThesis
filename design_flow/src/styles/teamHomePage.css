@@ -1,0 +1,44 @@
+.thPage_header {
+    font-family: Helvetica;
+    font-style: bold;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    flex-shrink: 0;
+    background-color: blueviolet;
+}
+
+.thPage_backBtn {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    height: 10%;
+}
+
+.thPage_teamNameSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    height: 10%;
+    background-color: brown;
+}
+
+.thPage_main {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 80%;
+    background-color: aquamarine; 
+}
+
+.thPage_info {
+    background-color: darkolivegreen;
+}
+
+.thPage_assignSection {
+    background-color: goldenrod; 
+}
