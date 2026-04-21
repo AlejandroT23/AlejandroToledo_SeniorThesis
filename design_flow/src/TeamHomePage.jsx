@@ -35,6 +35,7 @@ function TeamHomePage() {
 
         getMembers(teamId).then(({data, error}) => {
             if (data) {
+                console.log(data);
                 setMembers(data)
             } else {
                 console.log("Error: ", error)
