@@ -56,49 +56,49 @@ function TeamHomePage() {
 
 
     return(<>
-        <button onClick={() => navigate(`/`)}>Back</button>
         <div>
-            <p>HOME</p>
+            <button onClick={() => navigate(`/`)}>Back</button>
         </div>
         <div>
-            <div>
-                <p>Team Description</p>
-                <p>{teams.teams?.desc}</p>
-            </div>
-            <div>
-                <p>Important Documents</p>
-            </div>
+            <h2>TEAM NAME</h2>
         </div>
+        {/* Main Body */}
         <div>
+            {/* Info Section */}
             <div>
-                <p>Assignments</p>
-                <AssignmentComponent 
-                    assignments={assignments}
-                    onAssignmentClick={(teamId, assignmentId) => navigate(`/team/${teamId}/${assignmentId}`)}
-                />
+                <div>
+                    <h2>Team Description</h2>
+                    <div></div>
+                </div>
+                <div>
+                    <h2>Team Members</h2>
+                    <div></div>
+                </div>
+                {/* <div>
+                </div> */}
             </div>
+            {/* Assignment Section */}
             <div>
-                <button onClick = {() => setShowCreateModal(true)}>
-                    + Create Assignment
-                </button>
-                {teams && (
-                    <CreateAssignmentModal
-                        isOpen={showCreateModal}
-                        onClose={() => setShowCreateModal(false)}
-                        teamId={teamId}
-                        onAssignmentCreated={handleAssignmentCreated}
+                <div>
+                    <p>Assignments</p>
+                    <AssignmentComponent 
+                        assignments={assignments}
+                        onAssignmentClick={(teamId, assignmentId) => navigate(`/team/${teamId}/${assignmentId}`)}
                     />
-                )}
-            </div>
-        </div>
-        <div>
-            <p>Team Members</p>
-            <div>
-                {members.map((member, index) => (
-                    <div key={index}>
-                        <span>{member.users?.first_name} {member.users?.last_name}</span>
-                    </div>
-                ))}
+                </div>
+                <div>
+                    <button onClick = {() => setShowCreateModal(true)}>
+                        + Create Assignment
+                    </button>
+                    {teams && (
+                        <CreateAssignmentModal
+                            isOpen={showCreateModal}
+                            onClose={() => setShowCreateModal(false)}
+                            teamId={teamId}
+                            onAssignmentCreated={handleAssignmentCreated}
+                        />
+                    )}
+                </div>
             </div>
         </div>
     </>)
