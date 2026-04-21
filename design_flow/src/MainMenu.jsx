@@ -52,61 +52,47 @@ function MainMenu() {
 
     return (
         <>
+            {/* profile */}
             <div>
-                <h1>This would be the Main Menu Page</h1>
-            </div>
-            {/* Side Bar */}
-            <div>
-                    {/* Side Bar Name Section*/}
-                    <div>
-                        {/* Profile Pic: Pic then Profile */}
-                        <div></div>
-                        <div>
-                            <button onClick={handleLogout}>Log Out</button>
-                        </div>
-                    </div>
-                </div>
-                {/* Main */}
                 <div>
-                    {/* Search */}
+                    <button onClick={handleLogout}>Log Out</button>
+                </div>
+            </div>
+            {/* Splash Text */}
+            <div>
+                <h1>Welcome Back, User</h1>
+            </div>
+            {/* Main Body */}
+            <div>
+                {/* Team Component Section */}
+                <div>
                     <div>
-                        {/* Search Bar */}
-                        <div></div>
+                        <TeamComponent
+                            teams={teams}
+                            onTeamClick={(teamId) => navigate(`/team/${teamId}/home`)}
+                        />
                     </div>
-                    {/* Splash */}
-                    <div></div>
-                    {/* Component */}
                     <div>
-                        {/* Team Component */}
-                        <div>
-                            <div>
-                                <TeamComponent
-                                    teams={teams}
-                                    onTeamClick={(teamId) => navigate(`/team/${teamId}/home`)}
-                                />
-                            </div>
-                            <div>
-                                <button onClick = {() => setShowCreateModal(true)}>
-                                    + Create Team
-                                </button>
-                                {user && (
-                                    <CreateTeamModal
-                                        isOpen={showCreateModal}
-                                        onClose={() => setShowCreateModal(false)}
-                                        userId={user.id}
-                                        onTeamCreated={handleTeamCreated}
-                                    />
-                                )}
-                            </div> 
-                        </div>
-                        {/* Deadline Component */}
-                        <div>
-                            <div>
-                                <DeadlineComponent deadlines={deadlines}/>
-                            </div>
-                        </div>
+                        <button onClick = {() => setShowCreateModal(true)}>
+                            + Create Team
+                        </button>
+                        {user && (
+                            <CreateTeamModal
+                                isOpen={showCreateModal}
+                                onClose={() => setShowCreateModal(false)}
+                                userId={user.id}
+                                onTeamCreated={handleTeamCreated}
+                            />
+                        )}
                     </div>
                 </div>
+                {/* Deadline Component */}
+                <div>
+                    <div>
+                        <DeadlineComponent deadlines={deadlines}/>
+                    </div>
+                </div>
+            </div>
         </>
     );
 }
