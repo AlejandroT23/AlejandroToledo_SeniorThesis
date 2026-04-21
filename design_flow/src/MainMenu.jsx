@@ -72,7 +72,7 @@ function MainMenu() {
                             onTeamClick={(teamId) => navigate(`/team/${teamId}/home`)}
                         />
                     </div>
-                    <div>
+                    <div className="createTeamBtn">
                         <button onClick = {() => setShowCreateModal(true)}>
                             + Create Team
                         </button>

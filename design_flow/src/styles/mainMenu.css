@@ -56,6 +56,10 @@
     background: rgb(240, 190, 254)
 }
 
+.createTeamBtn {
+    padding-top: 20px;
+}
+
 .logout_btn {
     padding: 10px 20px;
     font-size: 16px;
