@@ -3,7 +3,7 @@ import './styles/teamComponent.css'
 function TeamComponent({teams, onTeamClick}) {
     return(
         <div className="team_list">
-            <h2 className="team_list_header">Teams</h2>
+            {/* <h2 className="team_list_header">Teams</h2> */}
             <div class="team_list_body">
                 {teams.map((team, index) => (
                     <div key={index} className="team_card" onClick={()=>onTeamClick(team.id)}>

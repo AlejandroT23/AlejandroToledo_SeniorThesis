@@ -3,13 +3,13 @@
     height: 100%;
 }
 
-.team_list_header {
+/* .team_list_header {
     font-family: Helvetica;
     font-style: bold;
     font-size: 36px;
     font-weight: bold;
     margin-bottom: 12px;
-}
+} */
 
 .team_list_body {
     display: flex;
