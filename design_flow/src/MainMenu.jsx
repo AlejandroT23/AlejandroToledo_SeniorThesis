@@ -66,14 +66,15 @@ function MainMenu() {
             <div className="main_body">
                 {/* Team Component Section */}
                 <div className="teamComp_body">
-                    <div>
+                    <h2 className="teamComp_header">Teams</h2>
+                    <div className="teamComp_list">
                         <TeamComponent
                             teams={teams}
                             onTeamClick={(teamId) => navigate(`/team/${teamId}/home`)}
                         />
                     </div>
                     <div className="createTeamBtn">
-                        <button onClick = {() => setShowCreateModal(true)}>
+                        <button onClick={() => setShowCreateModal(true)}>
                             + Create Team
                         </button>
                         {user && (
