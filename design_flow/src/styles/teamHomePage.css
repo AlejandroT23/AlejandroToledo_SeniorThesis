@@ -17,7 +17,8 @@
     font-family: Helvetica;
     font-size: 16px;
     font-weight: 300;
-    height: 300px;
+    height: 150px;
+    background-color: firebrick;
 }
 
 .thPage_memberSection {
@@ -29,6 +30,7 @@
 
 .thPage_memberCard {
     height: 50px;
+    background-color: pink;
 }
 
 .thPage_backBtnSection {
