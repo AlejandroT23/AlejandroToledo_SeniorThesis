@@ -91,7 +91,16 @@ function UploadModal({assignment_id, assignmentDriveFolder_id, userId, onUpload_
                     multiple
                     ref={fileInputRef}
                     style={{display: 'none'}}
-                    onChange={(e) => setFiles(prev => [...prev, ...Array.from(e.target.files)])}
+                    onChange={(e) => {
+                        const newFiles = Array.from(e.target.files);
+                        console.log('New files: ', newFiles);
+                        setFiles(prev => {
+                            const merged = [...prev, ...newFiles];
+                            console.log('Merged files: ', merged);
+                            return merged
+                        });               
+                    }
+                    //onChange={(e) => setFiles(prev => [...prev, ...Array.from(e.target.files)])}
                     // onChange={(e) => setFiles(Array.from(e.target.files))}
                 />
                 {files.length === 0 ? (
