@@ -60,13 +60,13 @@ function MainMenu() {
             </div>
             {/* Splash Text */}
             <div className="splash">
-                <h1 className="splash_text">Welcome Back, User</h1>
+                <h1 className="splash_text">WELCOME BACK, USER</h1>
             </div>
             {/* Main Body */}
             <div className="main_body">
                 {/* Team Component Section */}
                 <div className="teamComp_body">
-                    <h2 className="teamComp_header">Teams</h2>
+                    <h2 className="teamComp_header">TEAMS</h2>
                     <div className="teamComp_list">
                         <TeamComponent
                             teams={teams}
