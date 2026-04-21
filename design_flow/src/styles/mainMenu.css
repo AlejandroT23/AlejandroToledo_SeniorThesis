@@ -19,7 +19,10 @@
 .splash {
     width: 100%;
     height: 20%;
-    background-color: rgb(163, 179, 93)
+    background-color: rgb(163, 179, 93);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .splash_text {
@@ -27,7 +30,7 @@
     justify-content: center;
     align-items: center;
     font-family: Helvetica;
-    font-size: 20px;
+    font-size: 40px;
 }
 
 .main_body {
