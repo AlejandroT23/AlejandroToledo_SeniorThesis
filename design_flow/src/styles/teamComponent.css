@@ -16,6 +16,9 @@
     background-color: #e0e0e0;
     border-radius: 12px;
     padding: 20px;
+    height: 400px;
+    overflow-y: auto;
+
 }
 
 .team_card {
