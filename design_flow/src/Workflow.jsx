@@ -1,11 +1,12 @@
 import {useState, useEffect, useContext} from 'react'
-import {createWorkflowMessages, getWorkflowMessages, getTasks, createTasks, updateTask, deleteTask, getAssignmentDriveFolderLocation} from './database.js'
+import {getWorkflowMessages, getTasks, createTasks, updateTask, deleteTask, getAssignmentDriveFolderLocation, getVersionsByAssignment} from './database.js'
 import {useParams, useNavigate} from 'react-router-dom'
 
 import TaskList from './TaskList.jsx'
 import CreateTaskListModal from './CreateTaskListModal.jsx'
 import DeleteTaskModal from './DeleteTaskListModal.jsx'
 import UploadModal from './UploadModal.jsx'
+import Chatlog from './Chatlog.jsx'
 import AuthContext from './AuthContext.jsx'
 
 function Workflow() {
@@ -19,7 +20,8 @@ function Workflow() {
     console.log("assignment id: ", assignment_id)
     console.log("team id: ", team_id);
     
-    const [chatlog, setChatlog] = useState([]);
+    const [messages, setMessages] = useState([]);
+    const [versions, setVersions] = useState([]);
     const [tasks, setTasks] = useState([]);
     const [assignmentFolder, setAssignmentFolder] = useState(null);
     
@@ -65,15 +67,31 @@ function Workflow() {
     }
 
     const handleUpload = (newUpload) => {
-        setChatlog((prev) => [...prev, newUpload])
+        setVersions((prev) => [...prev, newUpload])
     }
 
     useEffect(() => {
+        // getWorkflowMessages(assignment_id).then(({data, error}) => {
+        //     if (data) {
+        //         setChatlog(data)
+        //     } else {
+        //         console.log('error:', error)
+        //     }
+        // })
+
         getWorkflowMessages(assignment_id).then(({data, error}) => {
             if (data) {
-                setChatlog(data)
+                setMessages(data)
             } else {
-                console.log('error:', error)
+                console.log('error: ', error)
+            }
+        })
+
+        getVersionsByAssignment(assignment_id).then(({data, error}) => {
+            if (data) {
+                setVersions(data)
+            } else {
+                console.log('error: ', error)
             }
         })
 
@@ -110,7 +128,12 @@ function Workflow() {
             </div>
             {/* chat log */}
             <div>
-
+                <Chatlog 
+                    versions={versions}
+                    messages={messages}
+                    assignment_id={assignment_id}
+                    onMessageSent={(newMsg) => setMessages(prev => [...prev, newMsg])}
+                />
             </div>
             {/* assignment task checker */}
             <div>

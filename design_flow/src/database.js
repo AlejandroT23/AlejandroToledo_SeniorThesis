@@ -155,10 +155,10 @@ export async function getAssignmentDriveFolderLocation(assignmentID) {
 
 // -- WORKFLOW MESSAGE -- //
 
-export async function createWorkflowMessage({assignment_id, user_id, type, content, version_id}) {
+export async function createWorkflowMessage({assignment_id, user_id, type, content}) {
     const {data, error} = await supabase
         .from('workflow_messages')
-        .insert({assignment_id, user_id, type, content, version_id})
+        .insert({assignment_id, user_id, type, content})
         .select()
         .single();
     return {data, error};
@@ -170,6 +170,20 @@ export async function getWorkflowMessages(assignment_id) {
         .select('*')
         .eq('assignment_id', assignment_id)
     return {data, error};
+}
+
+export async function getNextMessageNumber(assignment_id) {
+    const {data, error} = await supabase
+        .from('versions')
+        .select('version_number')
+        .eq('assignment_id', assignment_id)
+        .order('version_number', {ascending: false})
+        .limit(1)
+        .maybeSingle()
+
+    const nextVersion = data ? data.version_number + 1 : 1;
+    
+    return {data: nextVersion, error};
 }
 
 // MAYBE CREATE LOG TABLE THAT KEEPS TRACK OF ORDER SO IT CAN BE DISPLAYED?
@@ -230,3 +244,13 @@ export async function deleteTask(task_id) {
 
     return {error: null}
 }
+
+// -- CHATLOG -- //
+
+// export async function createChatlog(assignment_id) {
+//     const {data, error} = await supabase
+//         .from('workflow_messages, versions')
+//         .select('*')
+//         .eq('assignment_id', assignment_id)
+//         .order('created_at', {ascending: true})
+// }
