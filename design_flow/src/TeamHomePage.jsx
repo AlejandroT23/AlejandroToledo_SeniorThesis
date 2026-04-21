@@ -7,7 +7,7 @@ import CreateAssignmentModal from './CreateAssignmentModal.jsx'
 import './styles/teamHomePage.css'
 
 function TeamHomePage() {
-    const [teams, setTeams] = useState([]);
+    const [teams, setTeams] = useState(null);
     const [members, setMembers] = useState([]);
     const [assignments, setAssignments] = useState([]);
     const [showCreateModal, setShowCreateModal] = useState(false);
@@ -70,7 +70,9 @@ function TeamHomePage() {
             <div className="thPage_info">
                 <div>
                     <h2>Team Description</h2>
-                    <div></div>
+                    <div>
+                        {teams?.desc}
+                    </div>
                 </div>
                 <div>
                     <h2>Team Members</h2>
