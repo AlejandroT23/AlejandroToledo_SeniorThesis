@@ -9,7 +9,7 @@ import TeamComponent from "./TeamComponent.jsx";
 import DeadlineComponent from "./DeadlineComponent.jsx";
 import CreateTeamModal from "./CreateTeamModal.jsx";
 
-// import './styles/styles.css';
+import './styles/mainMenu.css';
 
 function MainMenu() {
     
@@ -51,21 +51,21 @@ function MainMenu() {
     }, [user]);
 
     return (
-        <>
+        <div className="page">
             {/* profile */}
-            <div>
+            <div className="profile">
                 <div>
                     <button onClick={handleLogout}>Log Out</button>
                 </div>
             </div>
             {/* Splash Text */}
-            <div>
+            <div className="splash">
                 <h1>Welcome Back, User</h1>
             </div>
             {/* Main Body */}
-            <div>
+            <div className="main_body">
                 {/* Team Component Section */}
-                <div>
+                <div className="teamComp_body">
                     <div>
                         <TeamComponent
                             teams={teams}
@@ -87,13 +87,13 @@ function MainMenu() {
                     </div>
                 </div>
                 {/* Deadline Component */}
-                <div>
+                <div className="deadlineComp_body">
                     <div>
                         <DeadlineComponent deadlines={deadlines}/>
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 
