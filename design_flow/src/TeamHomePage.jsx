@@ -58,8 +58,8 @@ function TeamHomePage() {
 
 
     return(<>
-        <div className="thPage_backBtn">
-            <button onClick={() => navigate(`/`)}>Back</button>
+        <div className="thPage_backBtnSection">
+            <button className="thPage_backBtn" onClick={() => navigate(`/`)}>Back</button>
         </div>
         <div className="thPage_teamNameSection">
             <h2 className="thPage_header">TEAM NAME</h2>

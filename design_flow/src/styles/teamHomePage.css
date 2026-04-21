@@ -1,14 +1,13 @@
 .thPage_header {
     font-family: Helvetica;
     font-style: bold;
-    font-size: 30px;
+    font-size: 40px;
     font-weight: 500;
     margin-bottom: 12px;
     flex-shrink: 0;
-    background-color: blueviolet;
 }
 
-.thPage_backBtn {
+.thPage_backBtnSection {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -41,4 +40,9 @@
 
 .thPage_assignSection {
     background-color: goldenrod; 
+}
+
+.thPage_backBtn {
+    font-size: 20px;
+    cursor: pointer;
 }
