@@ -36,10 +36,12 @@
 
 .thPage_info {
     background-color: darkolivegreen;
+    width: 65%;
 }
 
 .thPage_assignSection {
-    background-color: goldenrod; 
+    background-color: goldenrod;
+    width: 35%; 
 }
 
 .thPage_backBtn {
