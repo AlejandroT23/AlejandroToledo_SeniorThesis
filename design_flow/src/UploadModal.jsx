@@ -91,7 +91,8 @@ function UploadModal({assignment_id, assignmentDriveFolder_id, userId, onUpload_
                     multiple
                     ref={fileInputRef}
                     style={{display: 'none'}}
-                    onChange={(e) => setFiles(Array.from(e.target.files))}
+                    onChange={(e) => setFiles(prev => [...prev, Array.from(e.target.files)])}
+                    // onChange={(e) => setFiles(Array.from(e.target.files))}
                 />
                 {files.length === 0 ? (
                     <p>Click to upload files</p>
