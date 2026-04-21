@@ -77,9 +77,9 @@ function TeamHomePage() {
                 </div>
                 <div>
                     <h2 className="thPage_mainHead">Team Members</h2>
-                    <div className="thPage_mainBody">
+                    <div className="thPage_memberSection">
                         {members.map((member, index) => (
-                            <div key={index}>
+                            <div className="thPage_memberCard" key={index}>
                                 <span>{member.users?.first_name} {member.users?.last_name}</span>
                             </div>
                         ))}
@@ -91,7 +91,7 @@ function TeamHomePage() {
             {/* Assignment Section */}
             <div className="thPage_assignSection">
                 <div>
-                    <p>Assignments</p>
+                    <p className="thPage_header">Assignments</p>
                     <AssignmentComponent 
                         assignments={assignments}
                         onAssignmentClick={(teamId, assignmentId) => navigate(`/team/${teamId}/${assignmentId}`)}

@@ -17,6 +17,18 @@
     font-family: Helvetica;
     font-size: 16px;
     font-weight: 300;
+    height: 300px;
+}
+
+.thPage_memberSection {
+    font-family: Helvetica;
+    font-size: 16px;
+    font-weight: 300;
+    gap: 15px;
+}
+
+.thPage_memberCard {
+    height: 50px;
 }
 
 .thPage_backBtnSection {
@@ -57,6 +69,7 @@
     padding: 20px;
     background-color: goldenrod;
     width: 50%; 
+    gap: 20px;
 }
 
 .thPage_backBtn {
