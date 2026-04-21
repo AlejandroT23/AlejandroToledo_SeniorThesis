@@ -4,6 +4,8 @@ import {getTeam, getMembers, getAssignments} from './database.js'
 import AssignmentComponent from './AssignmentComponent.jsx';
 import CreateAssignmentModal from './CreateAssignmentModal.jsx'
 
+import './styles/TeamHomePage.jsx'
+
 function TeamHomePage() {
     const [teams, setTeams] = useState([]);
     const [members, setMembers] = useState([]);
