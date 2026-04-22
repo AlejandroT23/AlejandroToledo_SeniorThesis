@@ -116,7 +116,7 @@ function Workflow() {
 
         getAssignmentsByID(assignment_id).then(({data, error}) => {
             if (data) {
-                setAssignment
+                setAssignment(data)
             } else {
                 console.log('error: ', error)
             }
@@ -159,32 +159,30 @@ function Workflow() {
                     onSelectTask={handleSelectTask}
                 />
                 {/* create + delete tasks */}
-                <div>
-                    <button onClick = {() => setShowCreateTaskModal(true)}>
+                <div className="taskButtonSection">
+                    <button className="btn_createTask" onClick={() => setShowCreateTaskModal(true)}>
                         Create Task
                     </button>
-                    {assignment_id && (
-                        <CreateTaskListModal
-                            isOpen = {showCreateTaskModal}
-                            onClose = {() => setShowCreateTaskModal(false)}
-                            assignmentId = {assignment_id}
-                            onTaskCreated = {handleCreatedTask}
-                        />
-                    )}
-                </div>
-                <div>
-                    <button onClick = {() => setDeleteMode(true)}>
+                    <button className="btn_deleteTask" onClick={() => setDeleteMode(true)}>
                         Delete Task
                     </button>
-                    {assignment_id && (
-                        <DeleteTaskModal 
-                            isOpen = {showDeleteTaskModal}
-                            onClose = {() => setShowDeleteTaskModal(false)}
-                            task = {selectedTask}
-                            onTaskDeleted = {handleDeletedTask}
-                        />
-                    )}
                 </div>
+                {assignment_id && (
+                    <CreateTaskListModal
+                        isOpen={showCreateTaskModal}
+                        onClose={() => setShowCreateTaskModal(false)}
+                        assignmentId={assignment_id}
+                        onTaskCreated={handleCreatedTask}
+                    />
+                )}
+                {assignment_id && (
+                    <DeleteTaskModal
+                        isOpen={showDeleteTaskModal}
+                        onClose={() => setShowDeleteTaskModal(false)}
+                        task={selectedTask}
+                        onTaskDeleted={handleDeletedTask}
+                    />
+                )}
             </div>
         </div>
     </>)
