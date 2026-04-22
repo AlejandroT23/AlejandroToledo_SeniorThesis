@@ -67,6 +67,7 @@
     min-height: 0; */
     height: 535px;
     overflow-y: auto;
+    margin-bottom: 20px;
 }
 
 .deadlineComp_body {
