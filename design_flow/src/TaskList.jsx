@@ -1,3 +1,5 @@
+import './styles/tasklist.css'
+
 function TaskList({tasks, onToggle, deleteMode, onSelectTask}) {
     return(<div className="tasklist">
         <div>

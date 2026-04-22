@@ -19,6 +19,7 @@
     font-size: 16px;
     font-weight: 300;
     height: 150px;
+    background-color: #e0e0e0
 }
 
 .thPage_memberSection {
@@ -73,6 +74,12 @@
 }
 
 .thPage_backBtn {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.createAssignBtn {
+    padding: 10px 24px;
     font-size: 20px;
     cursor: pointer;
 }

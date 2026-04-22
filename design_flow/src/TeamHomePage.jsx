@@ -98,7 +98,7 @@ function TeamHomePage() {
                         onAssignmentClick={(teamId, assignmentId) => navigate(`/team/${teamId}/${assignmentId}`)}
                     />
                 </div>
-                <div>
+                <div className="createAssignBtn">
                     <button onClick = {() => setShowCreateModal(true)}>
                         + Create Assignment
                     </button>

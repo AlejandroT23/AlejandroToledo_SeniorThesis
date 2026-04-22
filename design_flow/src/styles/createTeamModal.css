@@ -75,7 +75,7 @@
 .form-group label {
   font-size: 0.8rem;
   font-weight: 500;
-  color: #aaa;
+  color: #000000;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -83,7 +83,7 @@
 .form-group input[type="text"],
 .form-group input[type="date"],
 .form-group textarea {
-  background: #2a2a3c;
+  background: #383838;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   padding: 10px 12px;
@@ -107,6 +107,10 @@
 .form-group textarea {
   resize: vertical;
   min-height: 60px;
+}
+
+.form-group input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
 }
 
 /* Color picker grid */
@@ -174,8 +178,8 @@
 }
 
 .btn-cancel:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #000000;
+  background: #383838;
+  color: #ffffff;
 }
 
 .btn-create {

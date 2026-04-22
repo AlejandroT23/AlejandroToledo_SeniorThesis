@@ -71,7 +71,7 @@
 .cam-form-group label {
   font-size: 0.8rem;
   font-weight: 500;
-  color: #aaa;
+  color: #000000;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -79,7 +79,7 @@
 .cam-form-group input[type="text"],
 .cam-form-group input[type="date"],
 .cam-form-group textarea {
-  background: #2a2a3c;
+  background: #383838;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   padding: 10px 12px;
@@ -103,6 +103,10 @@
 .cam-form-group textarea {
   resize: vertical;
   min-height: 60px;
+}
+
+.cam-form-group input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
 }
 
 .cam-form-error {
@@ -138,8 +142,8 @@
 }
 
 .cam-btn-cancel:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #000000;
+  background: #383838;
+  color: #ffffff;
 }
 
 .cam-btn-create {
