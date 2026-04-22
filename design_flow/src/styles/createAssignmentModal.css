@@ -1,6 +1,4 @@
-/* src/styles/CreateTeamModal.css */
-
-.modal-overlay {
+.cam-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -14,8 +12,8 @@
   backdrop-filter: blur(4px);
 }
 
-.modal-container {
-  font-family: Helvetica, sans-serif;
+.cam-container {
+  font-family: Helvetica, Arial, sans-serif;
   background: #e3dfda;
   border-radius: 12px;
   width: 90%;
@@ -26,21 +24,21 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.modal-header {
+.cam-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px 24px 0;
 }
 
-.modal-header h2 {
+.cam-header h2 {
   margin: 0;
   font-size: 1.25rem;
   font-weight: 600;
   color: #e0e0e0;
 }
 
-.modal-close-btn {
+.cam-close-btn {
   background: none;
   border: none;
   color: #888;
@@ -52,27 +50,25 @@
   transition: background 0.15s, color 0.15s;
 }
 
-.modal-close-btn:hover {
+.cam-close-btn:hover {
   background: rgba(255, 255, 255, 0.08);
   color: #e0e0e0;
 }
 
-/* Form */
-
-.modal-form {
+.cam-form {
   padding: 20px 24px 24px;
   display: flex;
   flex-direction: column;
   gap: 18px;
 }
 
-.form-group {
+.cam-form-group {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.form-group label {
+.cam-form-group label {
   font-size: 0.8rem;
   font-weight: 500;
   color: #aaa;
@@ -80,9 +76,9 @@
   letter-spacing: 0.04em;
 }
 
-.form-group input[type="text"],
-.form-group input[type="date"],
-.form-group textarea {
+.cam-form-group input[type="text"],
+.cam-form-group input[type="date"],
+.cam-form-group textarea {
   background: #2a2a3c;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
@@ -94,52 +90,22 @@
   font-family: inherit;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
+.cam-form-group input:focus,
+.cam-form-group textarea:focus {
   border-color: rgba(100, 140, 255, 0.5);
 }
 
-.form-group input::placeholder,
-.form-group textarea::placeholder {
+.cam-form-group input::placeholder,
+.cam-form-group textarea::placeholder {
   color: #666;
 }
 
-.form-group textarea {
+.cam-form-group textarea {
   resize: vertical;
   min-height: 60px;
 }
 
-/* Color picker grid */
-
-.color-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.color-swatch {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 2px solid transparent;
-  cursor: pointer;
-  transition: transform 0.15s, border-color 0.15s;
-  outline: none;
-}
-
-.color-swatch:hover {
-  transform: scale(1.15);
-}
-
-.color-swatch.selected {
-  border-color: #fff;
-  transform: scale(1.15);
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
-}
-
-/* Error */
-
-.form-error {
+.cam-form-error {
   background: rgba(231, 76, 60, 0.15);
   border: 1px solid rgba(231, 76, 60, 0.3);
   border-radius: 8px;
@@ -148,17 +114,15 @@
   font-size: 0.85rem;
 }
 
-/* Action buttons */
-
-.modal-actions {
+.cam-actions {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
   padding-top: 4px;
 }
 
-.btn-cancel,
-.btn-create {
+.cam-btn-cancel,
+.cam-btn-create {
   padding: 10px 20px;
   border-radius: 8px;
   font-size: 0.9rem;
@@ -168,27 +132,27 @@
   transition: background 0.15s, opacity 0.15s;
 }
 
-.btn-cancel {
+.cam-btn-cancel {
   background: #aaa;
   color: #000000;
 }
 
-.btn-cancel:hover {
+.cam-btn-cancel:hover {
   background: rgba(255, 255, 255, 0.1);
   color: #000000;
 }
 
-.btn-create {
+.cam-btn-create {
   background: #e74c3c;
   color: #fff;
 }
 
-.btn-create:hover {
+.cam-btn-create:hover {
   background: #a22e21;
 }
 
-.btn-create:disabled,
-.btn-cancel:disabled {
+.cam-btn-create:disabled,
+.cam-btn-cancel:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }

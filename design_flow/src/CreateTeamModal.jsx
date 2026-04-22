@@ -18,7 +18,7 @@ function CreateTeamModal({ isOpen, onClose, userId, onTeamCreated }) {
   const [description, setDescription] = useState('');
   const [deadline, setDeadline] = useState('');
   const [selectedColor, setSelectedColor] = useState(COLOR_OPTIONS[0]);
-  const [icon, setIcon] = useState('');
+  // const [icon, setIcon] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -51,7 +51,7 @@ function CreateTeamModal({ isOpen, onClose, userId, onTeamCreated }) {
           team_name: teamName.trim(),
           deadline: deadline || null,
           desc: description.trim() || null,
-          icon: icon || null,
+          // icon: icon || null,
           color: selectedColor,
         },
         userId,
@@ -66,7 +66,7 @@ function CreateTeamModal({ isOpen, onClose, userId, onTeamCreated }) {
       setDescription('');
       setDeadline('');
       setSelectedColor(COLOR_OPTIONS[0]);
-      setIcon('');
+      // setIcon('');
 
       // Notify parent so it can refresh the team list
       if (onTeamCreated) {
@@ -159,17 +159,7 @@ function CreateTeamModal({ isOpen, onClose, userId, onTeamCreated }) {
           </div>
 
           {/* Icon / Emoji */}
-          <div className="form-group">
-            <label htmlFor="icon">Icon (emoji or text)</label>
-            <input
-              id="icon"
-              type="text"
-              value={icon}
-              onChange={(e) => setIcon(e.target.value)}
-              placeholder="e.g. 🎨 or 🚀"
-              maxLength={4}
-            />
-          </div>
+          
 
           {/* Error message */}
           {error && <div className="form-error">{error}</div>}

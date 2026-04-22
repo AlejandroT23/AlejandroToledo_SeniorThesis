@@ -1,5 +1,8 @@
 function TaskList({tasks, onToggle, deleteMode, onSelectTask}) {
-    return(
+    return(<div className="tasklist">
+        <div>
+            <h2>TASKS</h2>
+        </div>
         <div>
             {tasks.map((task, index) => (
                 <div
@@ -25,7 +28,7 @@ function TaskList({tasks, onToggle, deleteMode, onSelectTask}) {
                 </div>
             ))}
         </div>
-    )
+    </div>)
 }
 
 export default TaskList; 

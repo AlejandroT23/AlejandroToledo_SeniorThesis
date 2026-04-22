@@ -14,7 +14,7 @@
     flex-direction: column;
     gap: 10px;
     padding: 16px;
-    background-color: #d4bfa0;
+    background-color: #f8ebd6;
     cursor: pointer;
 }
 
@@ -23,7 +23,7 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-    color: #7a6a55;
+    color: #000000;
     font-size: 14px;
 }
 

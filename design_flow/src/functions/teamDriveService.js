@@ -40,7 +40,7 @@ export async function createTeamWithDrive(teamData, userId, driveToken) {
       deadline: teamData.deadline || null,
       desc: teamData.desc || null,
       admin: userId,
-      icon: teamData.icon || null,
+      // icon: teamData.icon || null,
       color: teamData.color || null,
       is_archived: false,
     })

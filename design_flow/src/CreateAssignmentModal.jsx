@@ -2,6 +2,7 @@ import {useState} from 'react';
 import {createAssignmentWithDrive} from './functions/teamDriveService';
 import useDriveToken from './operations/hooks/useDriveToken';
 import {getTeamDriveFolderLocation} from './database.js'
+import './styles/createAssignmentModal.css';
 
 function CreateAssignmentModal({isOpen, onClose, teamId, onAssignmentCreated}) {
     const {getToken} = useDriveToken();
@@ -81,20 +82,20 @@ function CreateAssignmentModal({isOpen, onClose, teamId, onAssignmentCreated}) {
     }
 
     return(
-        <div onClick={handleOverlayClick}>
+        <div className="cam-overlay" onClick={handleOverlayClick}>
             {/* Container */}
-            <div>
+            <div className="cam-container">
                 {/* Header */}
-                <div>
+                <div className="cam-header">
                     <h2>Create Assignment</h2>
-                    <button onClick={onClose}>
+                    <button className="cam-close-btn" onClick={onClose}>
                         &times;
                     </button>
                 </div>
                 {/* Form */}
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className="cam-form">
                     {/* Assignment Name */}
-                    <div>
+                    <div className="cam-form-group">
                         <label htmlFor="name">Assignment Name *</label>
                         <input
                             id = "name"
@@ -107,7 +108,7 @@ function CreateAssignmentModal({isOpen, onClose, teamId, onAssignmentCreated}) {
                         />
                     </div>
                     {/* Description */}
-                    <div>
+                    <div className="cam-form-group">
                         <label htmlFor="description">Description</label>
                         <textarea
                             id = "description"
@@ -119,7 +120,7 @@ function CreateAssignmentModal({isOpen, onClose, teamId, onAssignmentCreated}) {
                         />
                     </div>
                     {/* Deadline */}
-                    <div>
+                    <div className="cam-form-group">
                         <label htmlFor="deadline">Deadline</label>
                         <input
                             id = "deadline"
@@ -129,11 +130,12 @@ function CreateAssignmentModal({isOpen, onClose, teamId, onAssignmentCreated}) {
                             min={new Date().toISOString().split('T')[0]}
                         />
                     </div>
-                    {error && <div>{error}</div>}
+                    {error && <div className="cam-form-error">{error}</div>}
                     {/* Actions */}
-                    <div>
+                    <div className="cam-actions">
                         <button
                             type = "button"
+                            className="cam-btn-cancel"
                             onClick = {onClose}
                             disabled = {isLoading}
                         >
@@ -141,9 +143,10 @@ function CreateAssignmentModal({isOpen, onClose, teamId, onAssignmentCreated}) {
                         </button>
                         <button
                             type="submit"
+                            className="cam-btn-create"
                             disabled={isLoading}
                         >
-                            {isLoading ? 'Creating...' : 'Create Team'}
+                            {isLoading ? 'Creating...' : 'Create Assignment'}
                         </button>
                     </div>
                 </form>
