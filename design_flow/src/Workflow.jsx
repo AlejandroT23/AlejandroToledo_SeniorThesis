@@ -9,6 +9,8 @@ import UploadModal from './UploadModal.jsx'
 import Chatlog from './Chatlog.jsx'
 import AuthContext from './AuthContext.jsx'
 
+import './styles/workflow.css'
+
 function Workflow() {
     const navigate = useNavigate();
     const user = useContext(AuthContext)
@@ -114,11 +116,15 @@ function Workflow() {
     }, [])
 
     return (<>
-        <button onClick={() => navigate(`/team/${team_id}/home`)}>Back</button>
-        <h1>THIS IS THE ASSIGNMENT WORKFLOW</h1>
-        <div>
+        <div className="backBtnSection">
+            <button onClick={() => navigate(`/team/${team_id}/home`)}>Back</button>
+        </div>
+        <div className="splashTitle"> 
+            <h1>THIS IS THE ASSIGNMENT WORKFLOW</h1>
+        </div>
+        <div className="mainWorkspace">
             {/* upload bar */}
-            <div>
+            <div className="uploadSection">
                 <UploadModal
                     assignment_id={assignment_id}
                     assignmentDriveFolder_id={assignmentFolder}
@@ -127,7 +133,7 @@ function Workflow() {
                 />
             </div>
             {/* chat log */}
-            <div>
+            <div className="chatSection">
                 <Chatlog 
                     versions={versions}
                     messages={messages}
@@ -136,7 +142,7 @@ function Workflow() {
                 />
             </div>
             {/* assignment task checker */}
-            <div>
+            <div className="taskSection">
                 <TaskList 
                     tasks={tasks} 
                     onToggle={toggleTask}

@@ -1,0 +1,32 @@
+.backBtnSection {
+    height: 10%;
+    background-color: cadetblue;
+    padding: 10px;
+}
+
+.splashTitle {
+    height: 10%;
+    background-color: blueviolet;
+}
+
+.mainWorkspace {
+    height: 80%;
+    background-color: chocolate;
+    display: flex;
+    flex-direction: row;
+}
+
+.uploadSection {
+    width: 20%;
+    background-color: cornflowerblue;
+}
+
+.chatSection {
+    width: 80%;
+    background-color: aquamarine;
+}
+
+.taskSection {
+    width: 20%;
+    background-color: goldenrod;
+}
