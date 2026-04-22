@@ -24,7 +24,7 @@
 
 .mainWorkspace {
     height: 80%;
-    background-color: chocolate;
+    /* background-color: chocolate; */
     display: flex;
     flex-direction: row;
 }
@@ -45,7 +45,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 16px;
+    /* padding: 16px; */
     box-sizing: border-box;
 }
 
@@ -62,8 +62,7 @@
 .taskButtonSection {
     display: flex;
     gap: 12px;
-    width: 100%;
-    box-sizing: border-box;
+    width: 300px;
 }
 
 .taskButtonSection button {
