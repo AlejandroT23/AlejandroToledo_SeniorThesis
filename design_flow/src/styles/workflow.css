@@ -50,3 +50,39 @@
     font-size: 20px;
     cursor: pointer;
 }
+
+/* 
+
+*/
+
+.taskButtonSection {
+    display: flex;
+    gap: 12px;
+    width: 300px;
+}
+
+.taskButtonSection button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: Helvetica, Arial, sans-serif;
+    cursor: pointer;
+}
+
+.btn_createTask {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    color: #333;
+}
+
+.btn_deleteTask {
+    background-color: #c97070;
+    border: none;
+    color: #ffffff;
+}
+
+.btn_deleteTask:hover {
+    background-color: #b85c5c;
+}

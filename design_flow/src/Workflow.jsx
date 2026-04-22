@@ -116,7 +116,7 @@ function Workflow() {
 
         getAssignmentsByID(assignment_id).then(({data, error}) => {
             if (data) {
-                setAssignment(data)
+                setAssignment(data[0])
             } else {
                 console.log('error: ', error)
             }
