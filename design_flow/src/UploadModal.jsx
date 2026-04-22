@@ -104,7 +104,7 @@ function UploadModal({assignment_id, assignmentDriveFolder_id, userId, onUpload_
                     }
                 />
                 {files.length === 0 ? (
-                    <p>Click to upload files</p>
+                    <p className="fileDisplaySection_empty">Click to upload files</p>
                 ) : (
                     files.map((file, index) => (
                         <div className="fileItem" key={index}>
@@ -142,7 +142,8 @@ function UploadModal({assignment_id, assignmentDriveFolder_id, userId, onUpload_
                 </div>
                 {/* submit button*/}
                 <div className="uploadButtonSection">
-                    <button onClick={handleUpload}> Submit </button>
+                    <button className="btn_upload" onClick={() => fileInputRef.current.click()}>Upload</button>
+                    <button className="btn_submit" onClick={handleUpload}>Submit</button>
                 </div>
             </div>
         </div>

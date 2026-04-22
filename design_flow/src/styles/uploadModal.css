@@ -1,45 +1,114 @@
 .uploadModal_container {
-    height: 500px;
+    height: 600px;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
+/* ── File drop/display area ── */
 .fileDisplaySection {
-    height: 200px;
+    flex: 1;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    background-color: red;
+    gap: 10px;
+    padding: 16px;
+    background-color: #d4bfa0;
+    cursor: pointer;
+}
+
+.fileDisplaySection_empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #7a6a55;
+    font-size: 14px;
 }
 
 .fileItem {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 4px 8px;
+    background-color: #ffffff;
+    border: 2px dashed #4a90d9;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: 500;
 }
 
+/* ── Form section ── */
 .fileUploadSection {
-    flex: 1;
-    gap: 20px;
-    background-color: blanchedalmond;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    background-color: #e0ddd8;
 }
-
-/*  */
 
 .titleSection {
-    height: 20%;
-    background-color: rgb(151, 126, 175);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.titleSection label,
+.descSection label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.titleSection input {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #fff;
 }
 
 .descSection {
-    height: 60%;
-    background-color: coral;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
+.descSection textarea {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #fff;
+    resize: none;
+    height: 120px;
+}
+
+/* ── Button row ── */
 .uploadButtonSection {
-    height: 20%;
-    background-color: darkgreen;
+    display: flex;
+    gap: 12px;
 }
 
+.uploadButtonSection button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn_upload {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    color: #333;
+}
+
+.btn_submit {
+    background-color: #c97070;
+    border: none;
+    color: #ffffff;
+}
+
+.btn_submit:hover {
+    background-color: #b85c5c;
+}
