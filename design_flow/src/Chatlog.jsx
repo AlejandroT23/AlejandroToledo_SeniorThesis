@@ -79,7 +79,7 @@ function Chatlog({versions, messages, assignment_id, onMessageSent}) {
             />
         </div>
         <button onClick={() => handleMessageUpload(message)}>Submit</button>
-    </>)
+    </div>)
 }
 
 export default Chatlog
