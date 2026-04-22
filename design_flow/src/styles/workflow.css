@@ -1,13 +1,13 @@
 .backBtnSection {
     height: 10%;
-    background-color: cadetblue;
+    /* background-color: cadetblue; */
     padding: 20px;
     font-size: 20px;
 }
 
 .splashTitle {
     height: 10%;
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
     display: flex;
     justify-content: center;
     align-items: center;
