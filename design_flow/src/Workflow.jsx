@@ -1,5 +1,5 @@
 import {useState, useEffect, useContext} from 'react'
-import {getWorkflowMessages, getTasks, createTasks, updateTask, deleteTask, getAssignmentDriveFolderLocation, getVersionsByAssignment} from './database.js'
+import {getWorkflowMessages, getTasks, createTasks, updateTask, deleteTask, getAssignmentDriveFolderLocation, getVersionsByAssignment, getAssignmentsByID} from './database.js'
 import {useParams, useNavigate} from 'react-router-dom'
 
 import TaskList from './TaskList.jsx'
@@ -25,6 +25,7 @@ function Workflow() {
     const [messages, setMessages] = useState([]);
     const [versions, setVersions] = useState([]);
     const [tasks, setTasks] = useState([]);
+    const [assignment, setAssignment] = useState(null);
     const [assignmentFolder, setAssignmentFolder] = useState(null);
     
     // We don't use these here, so we might deleted once it works
@@ -113,14 +114,22 @@ function Workflow() {
             }
         })
 
+        getAssignmentsByID(assignment_id).then(({data, error}) => {
+            if (data) {
+                setAssignment
+            } else {
+                console.log('error: ', error)
+            }
+        })
+
     }, [])
 
     return (<>
         <div className="backBtnSection">
-            <button onClick={() => navigate(`/team/${team_id}/home`)}>Back</button>
+            <button className="back_btn" onClick={() => navigate(`/team/${team_id}/home`)}>Back</button>
         </div>
         <div className="splashTitle"> 
-            <h1>THIS IS THE ASSIGNMENT WORKFLOW</h1>
+            <h1 className="workflowHeader">{assignment?.name?.toUpperCase() || 'ASSIGNMENT'} WORKFLOW</h1>
         </div>
         <div className="mainWorkspace">
             {/* upload bar */}

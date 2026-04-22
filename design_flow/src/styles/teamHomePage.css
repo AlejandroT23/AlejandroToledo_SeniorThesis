@@ -21,6 +21,7 @@
     height: 150px;
     background-color: #e0e0e0;
     margin-bottom: 30px;
+    padding: 20px;
 }
 
 .thPage_memberSection {
@@ -28,6 +29,7 @@
     font-size: 16px;
     font-weight: 300;
     gap: 15px;
+    padding: 20px;
 }
 
 .thPage_memberCard {
@@ -76,6 +78,7 @@
 }
 
 .thPage_backBtn {
+    padding: 10px 20px;
     font-size: 20px;
     cursor: pointer;
 }

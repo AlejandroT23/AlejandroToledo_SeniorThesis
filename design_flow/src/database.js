@@ -202,6 +202,15 @@ export async function getAssignments(team_id) {
     return {data, error};
 }
 
+export async function getAssignmentsByID(assign_id) {
+   
+    const {data, error} = await supabase
+        .from('assignments')
+        .select('*')
+        .eq('id', assign_id)
+    return {data, error};
+}
+
 // -- TASKS -- //
 
 export async function getTasks(assignment_id) {
