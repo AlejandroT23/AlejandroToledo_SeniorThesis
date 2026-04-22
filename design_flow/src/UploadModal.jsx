@@ -3,6 +3,8 @@ import {createVersionWithDrive} from './functions/teamDriveService';
 import useDriveToken from './operations/hooks/useDriveToken'
 import { getNextVersionNumber } from './database';
 
+import "./styles/uploadModal.css"
+
 function UploadModal({assignment_id, assignmentDriveFolder_id, userId, onUpload_complete}) {
     const {getToken} = useDriveToken();
     const fileInputRef = useRef(null)
@@ -116,7 +118,7 @@ function UploadModal({assignment_id, assignmentDriveFolder_id, userId, onUpload_
             {/* upload desc. hub */}
             <div>
                 {/* title */}
-                <div>
+                <div className="titleSection">
                     <label htmlFor="title">Upload Title</label>
                     <input
                         id = "title"
@@ -129,7 +131,7 @@ function UploadModal({assignment_id, assignmentDriveFolder_id, userId, onUpload_
                     />
                 </div>
                 {/* desc. */}
-                <div>
+                <div className="descSection">
                     <label htmlFor="description">Description</label>
                     <textarea
                         id = "description"
@@ -141,7 +143,9 @@ function UploadModal({assignment_id, assignmentDriveFolder_id, userId, onUpload_
                     />
                 </div>
                 {/* submit button*/}
-                <button onClick={handleUpload}> Submit </button>
+                <div className="uploadButtonSection">
+                    <button onClick={handleUpload}> Submit </button>
+                </div>
             </div>
         </div>
     </>)

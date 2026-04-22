@@ -1,0 +1,30 @@
+.fileDisplaySection {
+    height: 70%;
+    display: flex;
+    gap: 20px;
+    background-color: red;
+}
+
+.fileUploadSection {
+    height: 30%;
+    gap: 20px;
+    background-color: blanchedalmond;
+}
+
+/*  */
+
+.titleSection {
+    height: 20%;
+    background-color: rgb(151, 126, 175);
+}
+
+.descSection {
+    height: 60%;
+    background-color: coral;
+}
+
+.uploadButtonSection {
+    height: 20%;
+    background-color: darkgreen;
+}
+

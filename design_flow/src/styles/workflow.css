@@ -1,12 +1,16 @@
 .backBtnSection {
     height: 10%;
     background-color: cadetblue;
-    padding: 10px;
+    padding: 20px;
+    font-size: 20px;
 }
 
 .splashTitle {
     height: 10%;
     background-color: blueviolet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .mainWorkspace {
@@ -18,6 +22,7 @@
 
 .uploadSection {
     width: 20%;
+    padding: 20;
     background-color: cornflowerblue;
 }
 
