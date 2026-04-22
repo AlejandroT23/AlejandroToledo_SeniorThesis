@@ -133,7 +133,7 @@ function Workflow() {
                 />
             </div>
             {/* chat log */}
-            <div className="chatSection">
+            <div className="chatLogSection">
                 <Chatlog 
                     versions={versions}
                     messages={messages}
