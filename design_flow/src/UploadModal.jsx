@@ -87,7 +87,7 @@ function UploadModal({assignment_id, assignmentDriveFolder_id, userId, onUpload_
     return(<>
         <div>
             {/* file display */}
-            <div onClick={() => fileInputRef.current.click()}>
+            <div className="fileDisplaySectionb" onClick={() => fileInputRef.current.click()}>
                 <input
                     type="file"
                     multiple
@@ -116,7 +116,7 @@ function UploadModal({assignment_id, assignmentDriveFolder_id, userId, onUpload_
                 )}
             </div>
             {/* upload desc. hub */}
-            <div>
+            <div className="fileUploadSection">
                 {/* title */}
                 <div className="titleSection">
                     <label htmlFor="title">Upload Title</label>
