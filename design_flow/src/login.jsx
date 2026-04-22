@@ -36,11 +36,9 @@ function LoginPage() {
                 </div>
             </div>
             <div className="button_div">
-                <div>
-                    <button onClick={handleGoogleLogin}>
-                        Sign in with Google
-                    </button>
-                </div>
+                <button onClick={handleGoogleLogin}>
+                    Sign in with Google
+                </button>
             </div>
             {error && <p style={{color: 'red'}}>{error}</p>}
         </div>
