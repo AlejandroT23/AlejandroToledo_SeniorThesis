@@ -46,9 +46,10 @@ function Chatlog({versions, messages, assignment_id, onMessageSent}) {
         
     // }, [])
 
-    return(<>
+    return(
+    <div className="chatSection">
         {/* Display */}
-        <div>
+        <div className="chatDisplay">
             {chatlog.map((chat, index) => (
                 <div key={index}>
                     {chat._type === 'upload' ? (
@@ -66,7 +67,7 @@ function Chatlog({versions, messages, assignment_id, onMessageSent}) {
             ))}
         </div>
         {/* Chat message */}
-        <div>
+        <div className="chatUploadSection">
             <label htmlFor="chat_message">Chatbox</label>
             <textarea
                 id = "chat_message"

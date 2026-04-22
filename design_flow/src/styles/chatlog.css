@@ -1,0 +1,16 @@
+.chatSection {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: Helvetica, sans-serif;
+}
+
+.chatDisplay {
+    height: 80%;
+    overflow-y: auto;
+}
+
+.chatUploadSection {
+    height: 20%;
+}
