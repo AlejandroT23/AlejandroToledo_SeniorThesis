@@ -60,7 +60,7 @@ function MainMenu() {
             </div>
             {/* Splash Text */}
             <div className="splash">
-                <h1 className="splash_text">WELCOME BACK, USER</h1>
+                <h1 className="splash_text">WELCOME BACK, {user?.first_name?.toUpperCase() || 'USER'}</h1>
             </div>
             {/* Main Body */}
             <div className="main_body">
