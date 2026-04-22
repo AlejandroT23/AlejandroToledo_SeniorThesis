@@ -3,6 +3,8 @@
 import { useState } from 'react'
 import { supabase } from './supabaseClient'
 
+import './styles/login.css';
+
 function LoginPage() {
 
     const [error, setError] = useState(null);
@@ -27,8 +29,8 @@ function LoginPage() {
     }
 
     return (
-        <div>
-            <p>Temporary Page</p>
+        <div className="main_div">
+            <p className="title">DESIGN FLOW</p>
             <h1>
                 Login Page
             </h1>
@@ -37,7 +39,6 @@ function LoginPage() {
             </button>
 
             {error && <p style={{color: 'red'}}>{error}</p>}
-
         </div>
     )
 }

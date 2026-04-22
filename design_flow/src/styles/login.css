@@ -1,0 +1,19 @@
+* {
+    width: 100%;
+    height: 100%;
+    background-color: #f9f6f1;
+}
+
+.main_div {
+    padding: 30% 40%;
+    background-color: #e0ddd8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-family: Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 50px;
+}

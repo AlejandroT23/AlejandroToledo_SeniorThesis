@@ -47,6 +47,7 @@
     align-items: center;
     /* padding: 16px; */
     box-sizing: border-box;
+    background-color: #f1f1f1;
 }
 
 .back_btn {
@@ -64,6 +65,7 @@
     gap: 12px;
     width: 100%;
     box-sizing: border-box;
+    background-color: #e0ddd8;
 }
 
 .taskButtonSection button {
