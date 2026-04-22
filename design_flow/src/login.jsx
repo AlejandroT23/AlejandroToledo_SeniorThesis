@@ -30,14 +30,14 @@ function LoginPage() {
 
     return (
         <div className="main_div">
-            <p className="title">DESIGN FLOW</p>
-            <h1>
-                Login Page
-            </h1>
-            <button onClick={handleGoogleLogin}>
-                Sign in with Google
-            </button>
-
+            <div className="title_div">
+                <p className="title">DESIGN FLOW</p>
+            </div>
+            <div className="button_div">
+                <button onClick={handleGoogleLogin}>
+                    Sign in with Google
+                </button>
+            </div>
             {error && <p style={{color: 'red'}}>{error}</p>}
         </div>
     )
