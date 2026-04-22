@@ -85,9 +85,9 @@ function UploadModal({assignment_id, assignmentDriveFolder_id, userId, onUpload_
     }
 
     return(<>
-        <div>
+        <div className="uploadModal_container">
             {/* file display */}
-            <div className="fileDisplaySectionb" onClick={() => fileInputRef.current.click()}>
+            <div className="fileDisplaySection" onClick={() => fileInputRef.current.click()}>
                 <input
                     type="file"
                     multiple
@@ -102,14 +102,12 @@ function UploadModal({assignment_id, assignmentDriveFolder_id, userId, onUpload_
                             return merged
                         })}
                     }
-                    //onChange={(e) => setFiles(prev => [...prev, ...Array.from(e.target.files)])}
-                    // onChange={(e) => setFiles(Array.from(e.target.files))}
                 />
                 {files.length === 0 ? (
                     <p>Click to upload files</p>
                 ) : (
                     files.map((file, index) => (
-                        <div key={index}>
+                        <div className="fileItem" key={index}>
                             <p>{file.name}</p>
                         </div>
                     ))
