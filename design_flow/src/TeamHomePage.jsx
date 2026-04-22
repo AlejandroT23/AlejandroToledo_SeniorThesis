@@ -91,7 +91,7 @@ function TeamHomePage() {
             {/* Assignment Section */}
             <div className="thPage_assignSection">
                 <div>
-                    <p className="thPage_header">Assignments</p>
+                    <p className="thPage_mainHead">Assignments</p>
                     <AssignmentComponent 
                         assignments={assignments}
                         onAssignmentClick={(teamId, assignmentId) => navigate(`/team/${teamId}/${assignmentId}`)}
