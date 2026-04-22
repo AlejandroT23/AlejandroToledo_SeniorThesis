@@ -27,7 +27,8 @@ function TeamHomePage() {
     useEffect(() => {
         getTeam(teamId).then(({data, error}) => {
             if (data) {
-                setTeams(data)
+                console.log("Team Array: ", data);
+                setTeams(data);
             } else {
                 console.log("Error: ", error);
             }
