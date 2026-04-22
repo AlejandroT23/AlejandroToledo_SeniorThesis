@@ -42,7 +42,6 @@
 
 .taskSection {
     width: 20%;
-    background-color: goldenrod;
 }
 
 .back_btn {
@@ -57,10 +56,8 @@
 
 .taskButtonSection {
     display: flex;
-    align-items: center;
-    justify-content: center;
     gap: 12px;
-    width: 300px;
+    width: 100%;
 }
 
 .taskButtonSection button {
