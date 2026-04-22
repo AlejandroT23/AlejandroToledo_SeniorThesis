@@ -63,7 +63,7 @@ function TeamHomePage() {
             <button className="thPage_backBtn" onClick={() => navigate(`/`)}>Back</button>
         </div>
         <div className="thPage_teamNameSection">
-            <h2 className="thPage_header">TEAM NAME</h2>
+            <h2 className="thPage_header">{team.team_name}</h2>
         </div>
         {/* Main Body */}
         <div className="thPage_main">
