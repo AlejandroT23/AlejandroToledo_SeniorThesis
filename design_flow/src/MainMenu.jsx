@@ -87,13 +87,6 @@ function MainMenu() {
                         )}
                     </div>
                 </div>
-                {/* Deadline Component */}
-                <div className="deadlineComp_body">
-                    <h2 className="teamComp_header">DEADLINES</h2>
-                    <div>
-                        <DeadlineComponent deadlines={deadlines}/>
-                    </div>
-                </div>
             </div>
         </div>
     );

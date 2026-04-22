@@ -62,7 +62,8 @@
 .taskButtonSection {
     display: flex;
     gap: 12px;
-    width: 300px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .taskButtonSection button {
