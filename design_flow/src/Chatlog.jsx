@@ -1,6 +1,7 @@
 import {useState, useEffect, useContext} from 'react'
 import {createWorkflowMessage, getWorkflowMessages, getVersionsByAssignment} from './database.js'
 import AuthContext from './AuthContext.jsx'
+import './styles/chatlog.css'
 
 function Chatlog({versions, messages, assignment_id, onMessageSent}) {
     // const [versions, setVersions] = useState([])
@@ -53,22 +54,21 @@ function Chatlog({versions, messages, assignment_id, onMessageSent}) {
             {chatlog.map((chat, index) => (
                 <div key={index}>
                     {chat._type === 'upload' ? (
-                        <div>
-                            <p>{chat.title}</p>
-                            <p>{chat.description}</p>
-                            <p>{chat.file_name?.join(', ')}</p>
+                        <div className="chatItem_upload">
+                            <p className="chatItem_upload_title">{chat.title}</p>
+                            <p className="chatItem_upload_desc">{chat.description}</p>
+                            <p className="chatItem_upload_files">{chat.file_name?.join(', ')}</p>
                         </div>
                     ) : (
-                        <div>
+                        <div className="chatItem_message">
                             <p>{chat.content}</p>
                         </div>
                     )}
                 </div>
             ))}
         </div>
-        {/* Chat message */}
-        <div className="chatUploadSection">
-            <label htmlFor="chat_message">Chatbox</label>
+        {/* Chat input */}
+        <div className="chatInputBar">
             <textarea
                 id = "chat_message"
                 value = {message}
@@ -77,8 +77,8 @@ function Chatlog({versions, messages, assignment_id, onMessageSent}) {
                 row = {2}
                 maxLength = {500}
             />
+            <button onClick={() => handleMessageUpload(message)}>Send</button>
         </div>
-        <button onClick={() => handleMessageUpload(message)}>Submit</button>
     </div>)
 }
 
