@@ -67,7 +67,7 @@ function App() {
             setLoading(false);
         });
         
-        const {data: {subscription} } = supabase.auth.onAuthStateChange(async (event, newSession) => {
+        const {data: {subscription} } = supabase.auth.onAuthStateChange((event, newSession) => {
             console.log("onAuthStateChange fired, event:", event, "newSession:", newSession);
             setSession(newSession);
 
@@ -84,16 +84,20 @@ function App() {
                 console.log("User data extracted:", userData);
                 setUser(userData);
 
-                const exists = await userExists(userData.id);
-                if (!exists) {
-                    await createUser({
-                        id: userData.id,
-                        first_name: userData.first_name,
-                        last_name: userData.last_name,
-                        avatar: userData.avatar,
-                        google_drive_token: null,
-                    });
-                }
+                // Defer Supabase DB calls — calling supabase inside onAuthStateChange
+                // directly causes a deadlock (the auth lock is still held at this point)
+                setTimeout(async () => {
+                    const exists = await userExists(userData.id);
+                    if (!exists) {
+                        await createUser({
+                            id: userData.id,
+                            first_name: userData.first_name,
+                            last_name: userData.last_name,
+                            avatar: userData.avatar,
+                            google_drive_token: null,
+                        });
+                    }
+                }, 0);
 
             } else if (!newSession) {
                 console.log("Session ended, clearing user");
