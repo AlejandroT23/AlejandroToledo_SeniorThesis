@@ -71,6 +71,34 @@ export async function getTeamDriveFolderLocation(teamID) {
     return {data: data?.drive_folder_id, error}
 }
 
+export async function getInviteCode(team_id) {
+    const {data, error} = await supabase
+        .from('teams')
+        .select('invite_code')
+        .eq('id', team_id)
+        .single()
+    return {data, error}
+}
+
+export async function saveInviteCode(team_id, invite_code) {
+    const {data, error} = await supabase
+        .from('teams')
+        .update({invite_code})
+        .eq('id', team_id)
+        .select('invite_code')
+        .single();
+    return {data, error};
+}
+
+export async function getTeamByInviteCode(invite_code) {
+    const {data, error} = await supabase
+        .from('teams')
+        .select('*')
+        .eq('invite_code', invite_code)
+        .maybeSingle()
+    return {data, error}
+}
+
 // ===
 // DEADLINE TABLE
 // ===

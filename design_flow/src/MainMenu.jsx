@@ -8,6 +8,7 @@ import {getUserTeams, getMostRecentDeadlines} from './database.js';
 import TeamComponent from "./TeamComponent.jsx";
 import DeadlineComponent from "./DeadlineComponent.jsx";
 import CreateTeamModal from "./CreateTeamModal.jsx";
+import JoinTeamModal from "./JoinTeamModal.jsx";
 
 import './styles/mainMenu.css';
 
@@ -18,10 +19,15 @@ function MainMenu() {
     const [teams, setTeams] = useState([]);
     const [deadlines, setDeadlines] = useState([]);
     const [showCreateModal, setShowCreateModal] = useState(false);
+    const [showJoinModal, setShowJoinModal] = useState(false);
     
     const user = useContext(AuthContext);
 
     const handleTeamCreated = (newTeam) => {
+        setTeams((prev) => [...prev, newTeam]);
+    };
+
+    const handleTeamJoined = (newTeam) => {
         setTeams((prev) => [...prev, newTeam]);
     };
 
@@ -77,12 +83,24 @@ function MainMenu() {
                         <button onClick={() => setShowCreateModal(true)}>
                             + Create Team
                         </button>
+                        <button onClick={() => setShowJoinModal(true)}>
+                            + Join Team
+                        </button>
                         {user && (
                             <CreateTeamModal
                                 isOpen={showCreateModal}
                                 onClose={() => setShowCreateModal(false)}
                                 userId={user.id}
                                 onTeamCreated={handleTeamCreated}
+                            />
+                        )}
+                        {user && (
+                            <JoinTeamModal
+                                isOpen={showJoinModal}
+                                onClose={() => setShowJoinModal(false)}
+                                userId={user.id}
+                                userEmail={user.email}
+                                onTeamJoined={handleTeamJoined}
                             />
                         )}
                     </div>

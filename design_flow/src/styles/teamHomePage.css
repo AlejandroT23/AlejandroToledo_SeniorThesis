@@ -83,6 +83,28 @@
     cursor: pointer;
 }
 
+.thPage_inviteCode {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background-color: #e0e0e0;
+    padding: 16px 20px;
+    margin-bottom: 30px;
+}
+
+.thPage_inviteCodeText {
+    font-family: monospace;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+}
+
+.thPage_copyBtn {
+    padding: 6px 14px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
 .createAssignBtn button{
     padding: 10px 24px;
     font-size: 20px;

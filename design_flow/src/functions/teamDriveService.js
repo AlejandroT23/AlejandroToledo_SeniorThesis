@@ -33,6 +33,9 @@ import {
  */
 export async function createTeamWithDrive(teamData, userId, driveToken) {
   // 1. Insert team into Supabase
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  const invite_code = Array.from({length: 8}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+
   const { data: team, error: teamError } = await supabase
     .from('teams')
     .insert({
@@ -43,6 +46,7 @@ export async function createTeamWithDrive(teamData, userId, driveToken) {
       // icon: teamData.icon || null,
       color: teamData.color || null,
       is_archived: false,
+      invite_code,
     })
     .select()
     .single();

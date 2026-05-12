@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import {useParams, useNavigate} from 'react-router-dom'
-import {getTeam, getMembers, getAssignments} from './database.js'
+import {getTeam, getMembers, getAssignments, getInviteCode, saveInviteCode} from './database.js'
 import AssignmentComponent from './AssignmentComponent.jsx';
 import CreateAssignmentModal from './CreateAssignmentModal.jsx'
 
@@ -10,7 +10,9 @@ function TeamHomePage() {
     const [teams, setTeams] = useState(null);
     const [members, setMembers] = useState([]);
     const [assignments, setAssignments] = useState([]);
+    const [invite_code, setInviteCode] = useState('');
     const [showCreateModal, setShowCreateModal] = useState(false);
+
 
     // const {teamId} = useParams();
     
@@ -53,10 +55,27 @@ function TeamHomePage() {
             }
         })
 
-        // set the members
-        // set the assignments
+        getInviteCode(teamId).then(async ({data, error}) => {
+            if (error) {
+                console.log("Error fetching invite code: ", error);
+                return;
+            }
 
-    }, []);
+            if (data?.invite_code) {
+                setInviteCode(data.invite_code);
+            } else {
+                const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+                const code = Array.from({length: 8}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+                const {data: saved, error: saveError} = await saveInviteCode(teamId, code);
+                if (saveError) {
+                    console.log("Error saving invite code: ", saveError);
+                } else {
+                    setInviteCode(saved.invite_code);
+                }
+            }
+        })
+
+    }, [teamId]);
 
 
     return(<>
@@ -74,6 +93,19 @@ function TeamHomePage() {
                     <h2 className="thPage_mainHead">Team Description</h2>
                     <div className="thPage_mainBody">
                         {teams?.desc}
+                    </div>
+                </div>
+                <div>
+                    <h2 className="thPage_mainHead">Invite Code</h2>
+                    <div className="thPage_inviteCode">
+                        <span className="thPage_inviteCodeText">{invite_code || '—'}</span>
+                        <button
+                            className="thPage_copyBtn"
+                            onClick={() => navigator.clipboard.writeText(invite_code)}
+                            disabled={!invite_code}
+                        >
+                            Copy
+                        </button>
                     </div>
                 </div>
                 <div>
