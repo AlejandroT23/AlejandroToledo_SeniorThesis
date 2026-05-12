@@ -80,6 +80,14 @@ export async function getInviteCode(team_id) {
     return {data, error}
 }
 
+export async function updateUserDriveToken(user_id, google_drive_token) {
+    const {error} = await supabase
+        .from('users')
+        .update({google_drive_token})
+        .eq('id', user_id);
+    return {error};
+}
+
 export async function saveInviteCode(team_id, invite_code) {
     const {data, error} = await supabase
         .from('teams')

@@ -215,7 +215,7 @@ export async function createVersionWithDrive(versionData, assignmentDriveFolderI
  * @param {string} memberEmail - the new member's email
  * @param {string} driveToken
  */
-export async function addMemberAndShareDrive(teamId, userId, memberEmail, driveToken) {
+export async function addMemberAndShareDrive(teamId, userId, memberEmail) {
   // 1. Add member to team_members table
   const { error: memberError } = await supabase
     .from('team_members')
@@ -227,10 +227,10 @@ export async function addMemberAndShareDrive(teamId, userId, memberEmail, driveT
 
   if (memberError) throw new Error(`Failed to add member: ${memberError.message}`);
 
-  // 2. Get the team's Drive folder ID
+  // 2. Get the team's Drive folder ID and admin user ID
   const { data: team, error: teamError } = await supabase
     .from('teams')
-    .select('drive_folder_id')
+    .select('drive_folder_id, admin')
     .eq('id', teamId)
     .single();
 
@@ -239,10 +239,22 @@ export async function addMemberAndShareDrive(teamId, userId, memberEmail, driveT
     return;
   }
 
-  // 3. Share the Drive folder with the new member
-  if (driveToken && memberEmail) {
+  // 3. Fetch the owner's stored Drive token
+  const { data: adminUser, error: adminError } = await supabase
+    .from('users')
+    .select('google_drive_token')
+    .eq('id', team.admin)
+    .single();
+
+  if (adminError || !adminUser?.google_drive_token) {
+    console.warn('Could not share Drive folder — owner token unavailable');
+    return;
+  }
+
+  // 4. Share the folder using the owner's token
+  if (memberEmail) {
     try {
-      await shareWithUser(driveToken, team.drive_folder_id, memberEmail, 'writer');
+      await shareWithUser(adminUser.google_drive_token, team.drive_folder_id, memberEmail, 'writer');
     } catch (shareErr) {
       console.error('Failed to share Drive folder with new member:', shareErr);
     }

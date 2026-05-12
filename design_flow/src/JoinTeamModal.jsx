@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import { getTeamByInviteCode, getMembers } from './database';
 import { addMemberAndShareDrive } from './functions/teamDriveService';
-import useDriveToken from './operations/hooks/useDriveToken';
 import './styles/createTeamModal.css';
 
 function JoinTeamModal({ isOpen, onClose, userId, userEmail, onTeamJoined }) {
-    const { getToken } = useDriveToken();
     const [code, setCode] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -40,8 +38,7 @@ function JoinTeamModal({ isOpen, onClose, userId, userEmail, onTeamJoined }) {
                 return;
             }
 
-            const driveToken = await getToken();
-            await addMemberAndShareDrive(team.id, userId, userEmail, driveToken);
+            await addMemberAndShareDrive(team.id, userId, userEmail);
 
             if (onTeamJoined) onTeamJoined(team);
             setCode('');

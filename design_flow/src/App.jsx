@@ -9,7 +9,7 @@ import TeamHomePage from './TeamHomePage.jsx';
 import Workflow from './Workflow.jsx';
 // import MainMenu from './main.jsx';
 import {useState, useEffect} from 'react';
-import {createUser, userExists, getUser, getSession} from './database.js'
+import {createUser, userExists, getUser, getSession, updateUserDriveToken} from './database.js'
 //--
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
@@ -96,6 +96,9 @@ function App() {
                             avatar: userData.avatar,
                             google_drive_token: null,
                         });
+                    }
+                    if (newSession?.provider_token) {
+                        await updateUserDriveToken(userData.id, newSession.provider_token);
                     }
                 }, 0);
 
