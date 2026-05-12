@@ -59,6 +59,10 @@ function App() {
                 const userData = extractUserFromSession(session);
                 console.log("User data extracted:", userData);
                 setUser(userData);
+
+                if (session.provider_token) {
+                    updateUserDriveToken(userData.id, session.provider_token);
+                }
             } else {
                 console.log("No session found");
             }
